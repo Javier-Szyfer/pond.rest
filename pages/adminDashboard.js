@@ -128,7 +128,7 @@ export default function AdminDashboard() {
               onChange={(e) => setTrackDuration(e.target.value)}
             />
             <FormLabel htmlFor="inputFile" mb="1rem">
-              Artist's Contact Link
+              Artists Contact Link
             </FormLabel>
             <Input
               required
