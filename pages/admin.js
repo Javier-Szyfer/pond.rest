@@ -32,7 +32,7 @@ export default function Admin() {
     }
 
     try {
-      await auth.signinWithEmail(email, password);
+      await auth.createUserWithEmailAndPassword(email, password);
     } catch (err) {
       setError("You are not an admin");
       setLoading(false);
