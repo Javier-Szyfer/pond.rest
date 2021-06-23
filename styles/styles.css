@@ -84,6 +84,9 @@
   background-color: rgba(150, 150, 150, 0.468);
   border-radius: 2px;
 }
+.rhap_progress-bar::-webkit-slider-thumb {
+  pointer-events: auto;
+}
 
 .rhap_progress-filled {
   height: 100%;
@@ -197,8 +200,8 @@
     display: none;
   }
   .rhap_volume-container {
-    display: flex;
-    flex: 0 1;
+    display: none;
+    /* flex: 0 1; */
   }
   .rhap_volume-bar-area {
     display: none;
