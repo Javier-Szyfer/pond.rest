@@ -51,9 +51,8 @@
 }
 .rhap_horizontal-reverse {
   flex-direction: row-reverse;
-  /* align-items: center;
-  justify-content: center;
-  display: flex; */
+
+  align-items: space-between;
 }
 
 .rhap_progress-section {
@@ -143,6 +142,7 @@
   max-width: 80px;
   user-select: none;
   -webkit-user-select: none;
+  margin-left: 1rem;
 }
 
 .rhap_volume-bar-area {
@@ -186,8 +186,20 @@
   border-radius: 50px;
   box-shadow: rgba(rgb(196, 196, 196), 0.5) 0 0 2px;
   cursor: pointer;
+}
 
-  /* ::hover {
-      opacity: .9;
-    } */
+@media only screen and (max-width: 768px) {
+  .rhap_volume-bar {
+    display: none;
+  }
+  .rhap_volume-filled {
+    display: none;
+  }
+  .rhap_volume-container {
+    display: flex;
+    flex: 0 1;
+  }
+  .rhap_volume-bar-area {
+    display: none;
+  }
 }

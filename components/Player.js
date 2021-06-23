@@ -36,11 +36,12 @@ export default function Player({ isOpen, onToggle }) {
         left="0"
         bg={
           colorMode === "light"
-            ? "rgba(255,255,255,0.8)"
+            ? "rgba(250,250,250,0.8)"
             : "rgba(10 ,10,10,0.9)"
         }
         style={{ backdropFilter: "blur(3px)" }}
-        h="10vh"
+        maxH="18vh"
+        p=".5rem 0"
         width="100vw"
       >
         <Container

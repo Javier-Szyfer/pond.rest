@@ -2,6 +2,7 @@ import NextLink from "next/link";
 
 import {
   Heading,
+  Container,
   Box,
   Flex,
   Spacer,
@@ -37,53 +38,55 @@ export default function Navigation() {
       pt={{ base: 2, sm: 3 }}
       pb={{ base: 2, sm: 3 }}
     >
-      <Flex w="full" alignItems="center" justifyContent="center">
-        <NextLink href="/" passHref>
-          <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#909090">
-            Pond
+      <Container maxW="container.xl">
+        <Flex w="full" alignItems="center" justifyContent="center">
+          <NextLink href="/" passHref>
+            <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#909090">
+              Pond
+            </Heading>
+          </NextLink>
+          <Spacer />
+          <Heading
+            cursor="pointer"
+            as="h1"
+            fontSize={sizeMe}
+            color="#909090"
+            onClick={onOpen}
+            mr="2rem"
+          >
+            Submit your work{" "}
           </Heading>
-        </NextLink>
-        <Spacer />
-        <Heading
-          cursor="pointer"
-          as="h1"
-          fontSize={sizeMe}
-          color="#909090"
-          onClick={onOpen}
-          mr="2rem"
+          <NextLink href="/blog" passHref>
+            <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#909090">
+              Blog
+            </Heading>
+          </NextLink>
+          <Box onClick={toggleColorMode} ml="2rem" cursor="pointer">
+            {colorMode === "light" ? (
+              <FiMoon color="rgb(133, 133, 133)" />
+            ) : (
+              <FiSun color="rgb(133, 133, 133)" />
+            )}
+          </Box>
+        </Flex>
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          isCentered
+          size={isMobile ? "xs" : "md"}
         >
-          Submit your work{" "}
-        </Heading>
-        <NextLink href="/blog" passHref>
-          <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#909090">
-            Blog
-          </Heading>
-        </NextLink>
-        <Box onClick={toggleColorMode} ml="2rem" cursor="pointer">
-          {colorMode === "light" ? (
-            <FiMoon color="rgb(133, 133, 133)" />
-          ) : (
-            <FiSun color="rgb(133, 133, 133)" />
-          )}
-        </Box>
-      </Flex>
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        isCentered
-        size={isMobile ? "xs" : "md"}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            <Heading fontSize="1rem">Get featured on Pond </Heading>
-          </ModalHeader>
-          <ModalCloseButton _focus={{ borderColor: "none" }} />
-          <ModalBody>
-            <SubmitForm />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>
+              <Heading fontSize="1rem">Get featured on Pond </Heading>
+            </ModalHeader>
+            <ModalCloseButton _focus={{ borderColor: "none" }} />
+            <ModalBody>
+              <SubmitForm />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Container>
     </Box>
   );
 }
