@@ -55,11 +55,10 @@ export default function Admin() {
         >
           <Box
             minH="500px"
-            bg="#f7f7f7"
             display="flex"
             flexDirection="column"
             justifyContent="center"
-            alignItems="center"
+            alignItems="flex-start"
             border="1px solid #549543"
             borderRadius="0.375rem"
             p="2rem"
@@ -83,8 +82,8 @@ export default function Admin() {
               mb="2rem"
             />
 
-            <Button size="lg" variant="solid" type="submit" mb="2rem">
-              <Text color="#535353">Log in</Text>
+            <Button size="lg" variant="solid" type="submit" mb="2rem" size="md">
+              <Text>Log in</Text>
             </Button>
 
             <Text color="red">{error}</Text>

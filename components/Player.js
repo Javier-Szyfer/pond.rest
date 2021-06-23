@@ -65,12 +65,14 @@ export default function Player({ isOpen, onToggle }) {
                 objectFit="cover"
               />
             </Box>
-            <Heading as="h4" fontSize="16px" mr="1rem">
-              {selectedTrack?.artistName}
-            </Heading>
-            <Heading as="h5" fontWeight="light" fontSize="12px">
-              {selectedTrack?.trackName}
-            </Heading>
+            <Box>
+              <Heading as="h4" fontSize="14px">
+                {selectedTrack?.artistName}
+              </Heading>
+              <Heading as="h5" fontWeight="light" fontSize="12px">
+                {selectedTrack?.trackName}
+              </Heading>
+            </Box>
           </Box>
 
           <Box w={isMobile ? "full" : "70%"}>
