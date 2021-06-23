@@ -2,6 +2,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../styles/theme";
 import { AuthProvider } from "../lib/auth";
 import { MusicPlayerProvider } from "../context/AudioContext";
+import Navigation from "../components/NavBar";
 import "../styles/styles.css";
 
 const MyApp = ({ Component, pageProps }) => {
@@ -9,6 +10,7 @@ const MyApp = ({ Component, pageProps }) => {
     <MusicPlayerProvider>
       <ChakraProvider theme={theme}>
         <AuthProvider>
+          <Navigation />
           <Component {...pageProps} />
         </AuthProvider>
       </ChakraProvider>

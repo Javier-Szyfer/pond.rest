@@ -13,7 +13,6 @@ import {
   Divider,
 } from "@chakra-ui/react";
 
-import Navigation from "../components/NavBar";
 import Thumbnails from "../components/Thumbnails";
 import Player from "../components/Player";
 import { MdSentimentSatisfied } from "react-icons/md";
@@ -43,8 +42,7 @@ export default function Home() {
 
   return (
     <>
-      <Container maxW="container.xl" minH="100vh">
-        <Navigation />
+      <Container maxW="container.xl">
         <Box
           p="2rem 0 12px 0"
           maxW={{ base: "300px", sm: "500px", md: "800px" }}

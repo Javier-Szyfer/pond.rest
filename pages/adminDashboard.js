@@ -116,7 +116,7 @@ export default function AdminDashboard() {
                 flexDirection="column"
                 justifyContent="center"
               >
-                <FormLabel htmlFor="inputFile" color="#404040" mb="1rem">
+                <FormLabel htmlFor="inputFile" mb="1rem">
                   Artist Name
                 </FormLabel>
                 <Input
