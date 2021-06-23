@@ -82,7 +82,7 @@ export default function Admin() {
               mb="2rem"
             />
 
-            <Button size="lg" variant="solid" type="submit" mb="2rem" size="md">
+            <Button variant="solid" type="submit" mb="2rem" size="md">
               <Text>Log in</Text>
             </Button>
 
