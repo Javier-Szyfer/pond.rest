@@ -10,6 +10,7 @@ import {
   Text,
   Progress,
   Heading,
+  Flex,
 } from "@chakra-ui/react";
 export default function Admin() {
   const auth = useAuth();
@@ -97,10 +98,15 @@ export default function Admin() {
           justifyContent="center"
           alignItems="center"
         >
-          <Heading mb="2rem">You are in: Javier</Heading>
-          <NextLink href="/adminDashboard">
-            <Button>Go to dashboard</Button>
-          </NextLink>
+          <Heading mb="2rem">You are in Javier</Heading>
+          <Flex>
+            <NextLink href="/adminDashboard">
+              <Button mr="1rem">Go to dashboard</Button>
+            </NextLink>
+            <NextLink href="/submissions">
+              <Button>Go to submissions</Button>
+            </NextLink>
+          </Flex>
           <Button mt="2rem" variant="outline" onClick={() => auth.signout()}>
             Log out
           </Button>
