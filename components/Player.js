@@ -116,10 +116,8 @@ export default function Player({ isOpen, onToggle }) {
                 RHAP_UI.CURRENT_TIME,
                 RHAP_UI.PLAY,
                 RHAP_UI.PROGRESS_BAR,
-                <Box mr="1rem"></Box>,
 
                 RHAP_UI.DURATION,
-                <Box mr="1rem"></Box>,
                 RHAP_UI.VOLUME,
               ]}
               customVolumeControls={[]}
@@ -171,7 +169,7 @@ export default function Player({ isOpen, onToggle }) {
                 />
               </Box>
               <Text fontSize="12px" display="flex" justifyContent="center">
-                Listen more of {selectedTrack?.artistName}'s music
+                Listen more of {selectedTrack?.artistName}s music
                 <NextLink href={selectedTrack?.artistContact} passHref>
                   <a target="_blank" rel="noopener">
                     <Text

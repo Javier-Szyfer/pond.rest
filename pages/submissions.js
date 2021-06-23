@@ -40,12 +40,16 @@ export default function Submissions() {
             {submissions?.submissions.map((sub) => (
               <Tr key={sub.id}>
                 <Td cursor="pointer">
-                  <a href={sub.url} target="_blank" rel="noopener noreferrer">
+                  <a href={sub.url} target="_blank" rel="noreferrer">
                     {sub.url}
                   </a>
                 </Td>
                 <Td>
-                  <a href={`mailto:${sub.email}`} target="_blank">
+                  <a
+                    href={`mailto:${sub.email}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {sub.email}
                   </a>
                 </Td>
