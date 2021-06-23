@@ -117,7 +117,6 @@ export default function Player({ isOpen, onToggle }) {
                 RHAP_UI.CURRENT_TIME,
                 RHAP_UI.PLAY,
                 RHAP_UI.PROGRESS_BAR,
-
                 RHAP_UI.DURATION,
                 RHAP_UI.VOLUME,
               ]}
