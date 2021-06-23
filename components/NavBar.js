@@ -32,9 +32,11 @@ export default function Navigation() {
       position="sticky"
       top="0px"
       zIndex="999"
-      // bg="hsla(0,0%,100%,.825)"
+      bg={
+        colorMode === "light" ? "rgba(250,250,250,0.8)" : "rgba(10 ,10,10,0.7)"
+      }
       style={{ backdropFilter: "blur(4px)" }}
-      maxH="12vh"
+      maxH="14vh"
       pt={{ base: 2, sm: 3 }}
       pb={{ base: 2, sm: 3 }}
     >
@@ -54,7 +56,7 @@ export default function Navigation() {
             onClick={onOpen}
             mr="2rem"
           >
-            Submit your work{" "}
+            Get Featured
           </Heading>
           <NextLink href="/blog" passHref>
             <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#909090">

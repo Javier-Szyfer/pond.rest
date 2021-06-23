@@ -50,7 +50,7 @@ export default function Home() {
           justifyContent="flex-start"
           alignItems="center"
         >
-          <Text color="#909090" fontStyle="italic">
+          <Text color="#909090">
             This site is dedicated to those who enjoy music created with a
             modular synthesizer. <br /> For those who find beauty in creating
             their own instrument and therefore a sound that represents them.

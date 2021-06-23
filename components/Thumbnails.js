@@ -66,7 +66,13 @@ export default function Thumbnails({ onToggle, isOpen }) {
             <Text fontWeight="bold" fontSize="sm" lineHeight="1.2">
               {tr.artistName}
             </Text>
-            <Text fontSize="xs" fontWeight="normal" lineHeight="1.2">
+            <Text
+              fontSize="xs"
+              fontWeight="normal"
+              lineHeight="1.2"
+              maxW="200px"
+              textAlign="center"
+            >
               {tr.trackName}
             </Text>
 
