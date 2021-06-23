@@ -8,11 +8,9 @@
   width: 100%;
   background-color: transparent;
 }
-
-/* &:focus:not(:focus-visible) {
-    outline: 0;
-  }
- */
+.rhap_container:focus {
+  outline: 0;
+}
 
 /* .rhap_container svg {
   color: rgba(129, 16, 16, 0.797);
@@ -72,6 +70,9 @@
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
+}
+.rhap_progress-container:focus {
+  outline: 0;
 }
 
 .rhap_progress-bar {
@@ -151,11 +152,11 @@
   width: 100%;
   height: 14px;
   cursor: pointer;
-
-  /* &:focus:not(:focus-visible) {
-      outline: 0;
-    } */
 }
+.rhap_volume-bar-area:focus {
+  outline: 0;
+}
+
 .rhap_volume-filled {
   height: 100%;
   position: absolute;
