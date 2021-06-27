@@ -21,7 +21,8 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { MdClose } from "react-icons/md";
+
+import { MdClose, MdExpandLess } from "react-icons/md";
 
 export default function Player({ isOpen, onToggle }) {
   const { selectedTrack, setTrackData } = useMusicPlayer();
@@ -29,16 +30,17 @@ export default function Player({ isOpen, onToggle }) {
   const { colorMode } = useColorMode();
   const { isOpen: isModalOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Slide direction="bottom" in={isOpen} style={{ zIndex: 99 }} unmountOnExit>
+    <Slide direction="bottom" in={isOpen} style={{ zIndex: 999 }} unmountOnExit>
       <Box
-        position="fixed"
-        bottom="0"
-        left="0"
+        // position="fixed"
+        // bottom="0"
+        // left="0"
         bg={
           colorMode === "light"
-            ? "rgba(250,250,250,0.8)"
+            ? "rgba(255,255,255,0.8)"
             : "rgba(10 ,10,10,0.9)"
         }
+        borderTop={colorMode === "light" && "1px solid #efefef"}
         style={{ backdropFilter: "blur(3px)" }}
         maxH="18vh"
         p=".5rem 0"
@@ -66,10 +68,15 @@ export default function Player({ isOpen, onToggle }) {
               />
             </Box>
             <Box>
-              <Heading as="h4" fontSize="14px">
+              <Heading as="h4" fontSize="14px" color="#505050">
                 {selectedTrack?.artistName}
               </Heading>
-              <Heading as="h5" fontWeight="light" fontSize="12px">
+              <Heading
+                as="h5"
+                fontWeight="light"
+                fontSize="12px"
+                color="#505050"
+              >
                 {selectedTrack?.trackName}
               </Heading>
             </Box>
@@ -91,22 +98,41 @@ export default function Player({ isOpen, onToggle }) {
                     mr="1rem"
                     cursor="pointer"
                     onClick={onOpen}
+                    color="#505050"
                   >
                     {selectedTrack?.artistName}
                   </Heading>
-                  <Heading as="h5" fontWeight="light" fontSize="12px">
+                  <Heading
+                    as="h5"
+                    fontWeight="light"
+                    fontSize="12px"
+                    color="#505050"
+                  >
                     {selectedTrack?.trackName}
                   </Heading>
                 </Box>
-                <MdClose
-                  cursor="pointer"
-                  ml="10px"
-                  color="rgb(133, 133, 133)"
-                  size="20px"
-                  onClick={() => {
-                    onToggle(), setTrackData(null);
-                  }}
-                />
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <MdExpandLess
+                    cursor="pointer"
+                    color="rgb(133, 133, 133)"
+                    size="30px"
+                    mr="30px"
+                  />
+
+                  <MdClose
+                    cursor="pointer"
+                    ml="30px"
+                    color="rgb(133, 133, 133)"
+                    size="20px"
+                    onClick={() => {
+                      onToggle(), setTrackData(null);
+                    }}
+                  />
+                </Box>
               </Box>
             )}
             <AudioPlayer
@@ -173,15 +199,12 @@ export default function Player({ isOpen, onToggle }) {
               <Text fontSize="12px" display="flex" justifyContent="center">
                 Listen more of {selectedTrack?.artistName}s music
                 <NextLink href={selectedTrack?.artistContact} passHref>
-                  <a target="_blank" rel="noopener">
-                    <Text
-                      fontSize="12px"
-                      ml="4px"
-                      fontWeight="semibold"
-                      cursor="pointer"
-                    >
-                      here
-                    </Text>
+                  <a
+                    target="_blank"
+                    rel="noopener"
+                    style={{ marginLeft: "4px", fontWeight: "bold" }}
+                  >
+                    here
                   </a>
                 </NextLink>
               </Text>

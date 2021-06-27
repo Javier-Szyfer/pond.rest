@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 import { SimpleGrid, Box, Text, useColorMode } from "@chakra-ui/react";
 import { formatDistance, parseISO } from "date-fns";
@@ -7,9 +7,9 @@ import { MusicPlayerContext } from "../context/AudioContext";
 import useMusicPlayer from "../hooks/useMusicPlayer";
 
 export default function Thumbnails({ onToggle, isOpen }) {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const [state] = useContext(MusicPlayerContext);
-  const { playTrack, selectedTrack, setIsPlaying } = useMusicPlayer();
+  const { playTrack } = useMusicPlayer();
 
   //Light colors
 
@@ -24,7 +24,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
       return arrayOfColorsLight[3];
     }
   };
-  const arrayOfColorsLight = ["#88D18A", "#F0B7B3", "#ECCE8E", "#9AC2C5"];
+  const arrayOfColorsLight = ["#FEFAE0", "#EED3DF", "#CAD4C4", "#9AC2C5"];
 
   //Dark colors
   const colorsDark = (i) => {
@@ -52,7 +52,9 @@ export default function Thumbnails({ onToggle, isOpen }) {
       {state.allTracks?.tracks?.map((tr, i) => (
         <Box
           key={tr.id}
-          border="1px solid #909090"
+          border={
+            colorMode === "light" ? " 1px solid #707070" : " 1px solid #909090"
+          }
           borderRadius="0.375rem"
           display="flex"
           flexDirection="column"
@@ -80,7 +82,12 @@ export default function Thumbnails({ onToggle, isOpen }) {
             alignItems="center"
             position="relative"
           >
-            <Text fontWeight="bold" fontSize="sm" lineHeight="1.2">
+            <Text
+              fontWeight="bold"
+              fontSize="sm"
+              lineHeight="1.2"
+              color={colorMode === "light" && "#707070"}
+            >
               {tr.artistName}
             </Text>
             <Text
@@ -89,6 +96,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
               lineHeight="1.2"
               maxW="200px"
               textAlign="center"
+              color={colorMode === "light" && "#808080"}
             >
               {tr.trackName}
             </Text>
@@ -99,6 +107,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
               position="absolute"
               bottom="8px"
               right={{ sm: "8px" }}
+              color={colorMode === "light" && "#808080"}
             >
               {formatDistance(
                 parseISO(tr.createdAt),

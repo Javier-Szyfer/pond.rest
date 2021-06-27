@@ -1,3 +1,8 @@
+import "@fontsource/raleway/400.css";
+import "@fontsource/open-sans/700.css";
+import "@fontsource/questrial/400.css";
+import "@fontsource/prata/400.css";
+
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../styles/theme";
 import { AuthProvider } from "../lib/auth";

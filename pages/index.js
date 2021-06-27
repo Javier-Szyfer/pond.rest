@@ -11,6 +11,7 @@ import {
   Button,
   useDisclosure,
   Divider,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 import Thumbnails from "../components/Thumbnails";
@@ -19,6 +20,7 @@ import { MdSentimentSatisfied } from "react-icons/md";
 
 export default function Home() {
   const { isOpen, onToggle } = useDisclosure();
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -59,10 +61,11 @@ export default function Home() {
             disconnecting.
           </Text>
         </Box>
+
         <Box maxW="500px">
           <Divider />
           <form onSubmit={handleSubscribe}>
-            <FormLabel color="#909090" mt=".5rem">
+            <FormLabel color="#909090" mt=".5rem" fontWeight="normal">
               Leave your email here <br /> to keep up with uploads and
               interviews
             </FormLabel>
