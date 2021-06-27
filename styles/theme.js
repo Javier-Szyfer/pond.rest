@@ -1,6 +1,6 @@
 // 1. import `extendTheme` function
 import { extendTheme } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
+// import { mode } from "@chakra-ui/theme-tools";
 
 // 2. Add your color mode config
 // const config = {
@@ -9,33 +9,35 @@ import { mode } from "@chakra-ui/theme-tools";
 // };
 
 const styles = {
-  global: (props) => ({
+  global: {
     body: {
-      color: mode("gray.800", "whiteAlpha.900")(props),
-      bg: mode("white", "rgb(10,10,10)")(props),
+      color: "whiteAlpha.900",
+      bg: "rgb(10,10,10)",
     },
-  }),
+  },
 };
 
 const components = {
   Button: {
     // setup light/dark mode component defaults
-    baseStyle: (props) => ({
-      bg: mode("transparent", "#141214")(props),
-    }),
+    baseStyle: {
+      bg: "#141214",
+      background: "#141214",
+    },
     // 4. We can override existing variants
-    solid: (props) => ({
-      color: mode("red", "whiteAlpha.900")(props),
-    }),
+    solid: {
+      bg: "#141214",
+      color: "red",
+    },
   },
 
   Modal: {
     // setup light/dark mode component defaults
-    baseStyle: (props) => ({
+    baseStyle: {
       dialog: {
-        bg: mode("white", "#141214")(props),
+        bg: "#141214",
       },
-    }),
+    },
   },
 };
 
