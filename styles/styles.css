@@ -1,11 +1,14 @@
+::selection {
+  background-color: rgb(62, 62, 62);
+}
+
 .rhap_container {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   line-height: 1;
-  font-family: "Courier New", Courier, monospace;
-  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: transparent;
 }
 .rhap_container:focus {
@@ -113,7 +116,7 @@
 }
 
 .rhap_time {
-  color: rgb(114, 114, 114);
+  color: rgb(145, 145, 145);
   font-size: 16px;
   user-select: none;
   -webkit-user-select: none;

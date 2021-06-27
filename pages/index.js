@@ -11,7 +11,7 @@ import {
   Button,
   useDisclosure,
   Divider,
-  useMediaQuery,
+  // useMediaQuery,
 } from "@chakra-ui/react";
 
 import Thumbnails from "../components/Thumbnails";
@@ -20,21 +20,22 @@ import { MdSentimentSatisfied } from "react-icons/md";
 
 export default function Home() {
   const { isOpen, onToggle } = useDisclosure();
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  // const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [wontSpam, setWontSpam] = useState(false);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     try {
-      subscribeUser(email);
+      await subscribeUser(email);
+      setEmail("");
+      setSubscribed(true);
+      subscribedOk();
     } catch (err) {
       console.log(err);
     }
-    setEmail("");
-    setSubscribed(true);
-    subscribedOk();
   };
   const subscribedOk = () => {
     setTimeout(() => {
@@ -52,26 +53,27 @@ export default function Home() {
           justifyContent="flex-start"
           alignItems="center"
         >
-          <Text color="#909090">
+          <Text color="#909090" fontWeight="normal">
             This site is dedicated to those who enjoy music created with a
-            modular synthesizer. <br /> For those who find beauty in creating
-            their own instrument and therefore a sound that represents them.
-            Patching for a specific result or just to see what happens. <br />
-            An intimate relationship with the machines. Connecting and
-            disconnecting.
+            modular synthesizer. Who find beauty in creating their
+            <span style={{ fontWeight: "bold" }}> own instrument</span> and
+            therefore a{" "}
+            <span style={{ fontWeight: "bold" }}> personal sound.</span> <br />
+            Patching for a specific result or just to see what happens.{" "}
+            <span style={{ fontWeight: "bold" }}>
+              An intimate relationship with machines.
+            </span>
           </Text>
         </Box>
 
         <Box maxW="500px">
           <Divider />
           <form onSubmit={handleSubscribe}>
-            <FormLabel color="#909090" mt=".5rem" fontWeight="normal">
-              Leave your email here <br /> to keep up with uploads and
-              interviews
+            <FormLabel color="#909090" mt=".5rem" fontWeight="medium">
+              Keep up to date
             </FormLabel>
             <Box display="flex" justifyContent="flex-start" alignItems="center">
               <Input
-                size="sm"
                 mr=".5rem"
                 type="email"
                 variant="outline"
@@ -80,22 +82,21 @@ export default function Home() {
                 borderRadius="0.375rem"
                 onChange={(e) => setEmail(e.target.value)}
                 _focus={{ borderColor: "#909090" }}
-                maxW="70%"
+                maxW="60%"
+                placeholder="E-mail"
               />
               <Button
                 type="submit"
                 variant="solid"
-                size="sm"
-                // bg="#e8e8e8"
-                // _hover={{ bg: "#e4e4e4" }}
                 _focus={{ borderColor: "#909090" }}
                 color="#909090"
                 mr=".5rem"
+                isDisabled={subscribed === true}
               >
                 Submit
               </Button>
               {subscribed && (
-                <MdSentimentSatisfied color="#88D18A" size="24px" />
+                <MdSentimentSatisfied color="#80CFA9" size="24px" />
               )}
             </Box>
           </form>

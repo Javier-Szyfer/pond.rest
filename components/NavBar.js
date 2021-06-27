@@ -7,7 +7,6 @@ import {
   Flex,
   Spacer,
   useBreakpointValue,
-  useColorMode,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -17,11 +16,9 @@ import {
   useDisclosure,
   useMediaQuery,
 } from "@chakra-ui/react";
-import { FiSun, FiMoon } from "react-icons/fi";
 
 import SubmitForm from "./SubmitForm";
 export default function Navigation() {
-  const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
@@ -32,9 +29,7 @@ export default function Navigation() {
       position="sticky"
       top="0px"
       zIndex="999"
-      bg={
-        colorMode === "light" ? "rgba(255,255,255,0.8)" : "rgba(10 ,10,10,0.7)"
-      }
+      bg="rgba(10 ,10,10,0.7)"
       style={{ backdropFilter: "blur(4px)" }}
       maxH="14vh"
       pt={{ base: 2, sm: 3 }}
@@ -58,18 +53,11 @@ export default function Navigation() {
           >
             Get Featured
           </Heading>
-          <NextLink href="/blog" passHref>
+          <NextLink href="/notes" passHref>
             <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#909090">
-              Blog
+              Notes
             </Heading>
           </NextLink>
-          <Box onClick={toggleColorMode} ml="2rem" cursor="pointer">
-            {colorMode === "light" ? (
-              <FiMoon color="rgb(133, 133, 133)" />
-            ) : (
-              <FiSun color="rgb(133, 133, 133)" />
-            )}
-          </Box>
         </Flex>
         <Modal
           isOpen={isOpen}

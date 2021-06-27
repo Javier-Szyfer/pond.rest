@@ -52,9 +52,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
       {state.allTracks?.tracks?.map((tr, i) => (
         <Box
           key={tr.id}
-          border={
-            colorMode === "light" ? " 1px solid #707070" : " 1px solid #909090"
-          }
+          // border="1px solid #808080"
           borderRadius="0.375rem"
           display="flex"
           flexDirection="column"
@@ -86,7 +84,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
               fontWeight="bold"
               fontSize="sm"
               lineHeight="1.2"
-              color={colorMode === "light" && "#707070"}
+              color="#e9e9e9"
             >
               {tr.artistName}
             </Text>
@@ -94,9 +92,10 @@ export default function Thumbnails({ onToggle, isOpen }) {
               fontSize="xs"
               fontWeight="normal"
               lineHeight="1.2"
-              maxW="200px"
+              maxW={{ base: "120px", sm: "250px" }}
               textAlign="center"
-              color={colorMode === "light" && "#808080"}
+              color="#c4c4c4"
+              mt="2px"
             >
               {tr.trackName}
             </Text>

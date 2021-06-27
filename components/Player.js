@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Image from "next/image";
 import NextLink from "next/link";
 
@@ -13,7 +15,6 @@ import {
   Slide,
   Text,
   useMediaQuery,
-  useColorMode,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -22,27 +23,19 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { MdClose, MdExpandLess } from "react-icons/md";
+import { MdClose, MdExpandLess, MdExpandMore } from "react-icons/md";
 
 export default function Player({ isOpen, onToggle }) {
   const { selectedTrack, setTrackData } = useMusicPlayer();
+  const [expandMore, setExpandMore] = useState(false);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
-  const { colorMode } = useColorMode();
   const { isOpen: isModalOpen, onOpen, onClose } = useDisclosure();
   return (
     <Slide direction="bottom" in={isOpen} style={{ zIndex: 999 }} unmountOnExit>
       <Box
-        // position="fixed"
-        // bottom="0"
-        // left="0"
-        bg={
-          colorMode === "light"
-            ? "rgba(255,255,255,0.8)"
-            : "rgba(10 ,10,10,0.9)"
-        }
-        borderTop={colorMode === "light" && "1px solid #efefef"}
+        bg="rgba(10 ,10,10,0.8)"
         style={{ backdropFilter: "blur(3px)" }}
-        maxH="18vh"
+        maxH={{ base: "100vh", md: "50vh" }}
         p=".5rem 0"
         width="100vw"
       >
@@ -68,14 +61,14 @@ export default function Player({ isOpen, onToggle }) {
               />
             </Box>
             <Box>
-              <Heading as="h4" fontSize="14px" color="#505050">
+              <Heading as="h4" fontSize="12px" color="#a8a8a8">
                 {selectedTrack?.artistName}
               </Heading>
               <Heading
                 as="h5"
                 fontWeight="light"
                 fontSize="12px"
-                color="#505050"
+                color="#a8a8a8"
               >
                 {selectedTrack?.trackName}
               </Heading>
@@ -87,41 +80,66 @@ export default function Player({ isOpen, onToggle }) {
               <Box
                 display="flex"
                 alignItems="center"
+                flexDirection={expandMore ? "column" : "row"}
                 w="full"
                 justifyContent="space-between"
                 p="4px 0"
               >
-                <Box display="flex" alignItems="center">
+                <Box
+                  display={expandMore ? "none" : "flex"}
+                  alignItems="center"
+                  w="100%"
+                >
                   <Heading
                     as="h4"
-                    fontSize="14px"
-                    mr="1rem"
+                    fontSize="12px"
+                    mr=".5rem"
                     cursor="pointer"
-                    onClick={onOpen}
-                    color="#505050"
+                    // onClick={onOpen}
+                    color="#a8a8a8"
                   >
                     {selectedTrack?.artistName}
                   </Heading>
+                  <span style={{ marginRight: ".5rem" }}>-</span>
                   <Heading
                     as="h5"
                     fontWeight="light"
                     fontSize="12px"
-                    color="#505050"
+                    color="#a8a8a8"
+                    maxW={{ base: "150px", sm: "250px" }}
+                    isTruncated
                   >
                     {selectedTrack?.trackName}
                   </Heading>
                 </Box>
+
                 <Box
                   display="flex"
                   alignItems="center"
-                  justifyContent="space-between"
+                  justifyContent="flex-end"
+                  w={expandMore && "100%"}
                 >
-                  <MdExpandLess
-                    cursor="pointer"
-                    color="rgb(133, 133, 133)"
-                    size="30px"
-                    mr="30px"
-                  />
+                  {expandMore ? (
+                    <MdExpandMore
+                      cursor="pointer"
+                      color="rgb(133, 133, 133)"
+                      size="30px"
+                      mr="30px"
+                      onClick={() => {
+                        setExpandMore(!expandMore);
+                      }}
+                    />
+                  ) : (
+                    <MdExpandLess
+                      cursor="pointer"
+                      color="rgb(133, 133, 133)"
+                      size="30px"
+                      mr="30px"
+                      onClick={() => {
+                        setExpandMore(!expandMore);
+                      }}
+                    />
+                  )}
 
                   <MdClose
                     cursor="pointer"
@@ -129,10 +147,49 @@ export default function Player({ isOpen, onToggle }) {
                     color="rgb(133, 133, 133)"
                     size="20px"
                     onClick={() => {
-                      onToggle(), setTrackData(null);
+                      onToggle(),
+                        setTrackData(null),
+                        setExpandMore(!expandMore);
                     }}
                   />
                 </Box>
+                {expandMore && (
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    flexDirection="column"
+                  >
+                    <Heading as="h6" size="sm">
+                      {selectedTrack?.artistName}
+                    </Heading>
+                    <Text fontSize="12px"> {selectedTrack?.trackName}</Text>
+                    <Box w={{ base: "30vh", sm: "50vh" }} m="1rem 0">
+                      <Image
+                        src={selectedTrack?.urlImage}
+                        alt="artist pic"
+                        width={300}
+                        height={300}
+                        objectFit="cover"
+                      />
+                    </Box>
+                    <Text
+                      fontSize="12px"
+                      display="flex"
+                      justifyContent="center"
+                    >
+                      Listen more of {selectedTrack?.artistName}s music
+                      <NextLink href={selectedTrack?.artistContact} passHref>
+                        <a
+                          target="_blank"
+                          rel="noopener"
+                          style={{ marginLeft: "4px", fontWeight: "bold" }}
+                        >
+                          here
+                        </a>
+                      </NextLink>
+                    </Text>
+                  </Box>
+                )}
               </Box>
             )}
             <AudioPlayer
@@ -155,7 +212,6 @@ export default function Player({ isOpen, onToggle }) {
           {!isMobile && (
             <MdClose
               cursor="pointer"
-              // zIndex="999"
               ml="10px"
               color="rgb(133, 133, 133)"
               size="20px"
