@@ -55,7 +55,11 @@ export default function Thumbnails({ onToggle, isOpen }) {
   };
 
   return (
-    <SimpleGrid columns={{ base: 2, sm: 2, md: 4 }} spacing={4} m="2rem  0">
+    <SimpleGrid
+      columns={{ base: 1, sm: 2, md: 4 }}
+      spacing={{ base: 2, sm: 4 }}
+      m="2rem  0"
+    >
       {state.allTracks?.tracks?.map((tr, i) => (
         <Box
           key={tr.id}
@@ -68,8 +72,8 @@ export default function Thumbnails({ onToggle, isOpen }) {
           minH="100px"
           w="100%"
           h="100%"
-          bg="#131313"
-          _hover={{ bg: isMobile ? "none" : "#202020" }}
+          bg="whiteAlpha.200"
+          _hover={{ bg: isMobile ? "whiteAlpha.200" : "whiteAlpha.100" }}
           // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
           // border="1px solid #505050"
           draggable
@@ -102,7 +106,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
               fontSize="xs"
               fontWeight="normal"
               lineHeight="1.2"
-              maxW={{ base: "120px", sm: "250px" }}
+              maxW={{ base: "220px", sm: "250px" }}
               textAlign="center"
               color="#808080"
               m="4px 0"
@@ -116,7 +120,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
               position={isMobile ? "static" : "absolute"}
               bottom="8px"
               right="8px"
-              color="#c2c2c2"
+              color="#808080"
             >
               {formatDistance(
                 parseISO(tr.createdAt),
