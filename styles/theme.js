@@ -3,10 +3,10 @@ import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
 // 2. Add your color mode config
-const config = {
-  initialColorMode: "light",
-  useSystemColorMode: false,
-};
+// const config = {
+//   initialColorMode: "dark",
+//   useSystemColorMode: false,
+// };
 
 const styles = {
   global: (props) => ({
@@ -16,6 +16,7 @@ const styles = {
     },
   }),
 };
+
 const components = {
   Button: {
     // setup light/dark mode component defaults
@@ -40,12 +41,8 @@ const components = {
 
 // 3. extend the theme
 const theme = extendTheme({
-  config,
+  // config,
   styles,
   components,
-  // fonts: {
-  //   heading: "Open Sans",
-  //   body: "Open Sans",
-  // },
 });
 export default theme;

@@ -77,12 +77,7 @@ export default function SubmitForm() {
           onChange={(e) => setMessage(e.target.value)}
           _focus={{ borderColor: "#909090" }}
         />
-        <Button
-          type="submit"
-          variant="solid"
-          mt="1rem"
-          // _hover={{ bg: "gray.200" }}
-        >
+        <Button type="submit" variant="solid" mt="1rem" isDisabled={success}>
           Send
         </Button>
       </form>
