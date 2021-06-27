@@ -33,7 +33,7 @@ export default function Player({ isOpen, onToggle }) {
   return (
     <Slide direction="bottom" in={isOpen} style={{ zIndex: 999 }} unmountOnExit>
       <Box
-        bg="rgba(10 ,10,10,0.8)"
+        bg={expandMore ? "rgba(40 ,40,40,0.8)" : "rgba(10 ,10,10,0.8)"}
         style={{ backdropFilter: "blur(3px)" }}
         maxH={isMobile ? "100vh" : "50vh"}
         p=".5rem 0"
