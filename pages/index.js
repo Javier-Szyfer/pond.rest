@@ -77,13 +77,16 @@ export default function Home() {
                 mr=".5rem"
                 type="email"
                 variant="outline"
+                borderColor="whiteAlpha.600"
                 required
                 value={email}
                 borderRadius="0.375rem"
                 onChange={(e) => setEmail(e.target.value)}
                 _focus={{ borderColor: "#909090" }}
+                _hover={{ borderColor: "#909090" }}
                 maxW="60%"
-                placeholder="E-mail"
+                placeholder="email"
+                _placeholder={{ color: "#505050" }}
               />
               <Button
                 type="submit"
@@ -92,6 +95,7 @@ export default function Home() {
                 color="#909090"
                 mr=".5rem"
                 isDisabled={subscribed === true}
+                _hover={{ bg: "whiteAlpha.300" }}
               >
                 Submit
               </Button>

@@ -72,7 +72,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
           minH="100px"
           w="100%"
           h="100%"
-          bg="whiteAlpha.200"
+          bg="#1f1f1f"
           _hover={{ bg: isMobile ? "whiteAlpha.200" : "whiteAlpha.100" }}
           // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
           // border="1px solid #505050"

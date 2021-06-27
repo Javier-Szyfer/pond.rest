@@ -59,6 +59,8 @@ export default function SubmitForm() {
           required
           onChange={(e) => setEmail(e.target.value)}
           _focus={{ borderColor: "#909090" }}
+          _hover={{ borderColor: "#909090" }}
+          borderColor="whiteAlpha.600"
         />
         <FormLabel mt=".5rem">Link to your music or site </FormLabel>
 
@@ -69,6 +71,8 @@ export default function SubmitForm() {
           required
           onChange={(e) => setUrl(e.target.value)}
           _focus={{ borderColor: "#909090" }}
+          _hover={{ borderColor: "#909090" }}
+          borderColor="whiteAlpha.600"
         />
         <FormLabel mt=".5rem">Message </FormLabel>
         <Textarea
@@ -76,8 +80,18 @@ export default function SubmitForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           _focus={{ borderColor: "#909090" }}
+          _hover={{ borderColor: "#909090" }}
+          borderColor="whiteAlpha.600"
+          _placeholder={{ color: "#505050" }}
         />
-        <Button type="submit" variant="solid" mt="1rem" isDisabled={success}>
+        <Button
+          type="submit"
+          variant="solid"
+          mt="1rem"
+          isDisabled={success}
+          bg="whiteAlpha.800"
+          _hover={{ bg: "whiteAlpha.400" }}
+        >
           Send
         </Button>
       </form>
