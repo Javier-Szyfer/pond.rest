@@ -25,7 +25,7 @@ export default function Navigation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
-  const sizeMe = useBreakpointValue({ base: "1rem", md: "1rem" });
+  const sizeMe = useBreakpointValue({ base: ".9rem", md: "1rem" });
 
   return (
     <Box
@@ -33,7 +33,7 @@ export default function Navigation() {
       top="0px"
       zIndex="999"
       bg={
-        colorMode === "light" ? "rgba(250,250,250,0.8)" : "rgba(10 ,10,10,0.7)"
+        colorMode === "light" ? "rgba(255,255,255,0.8)" : "rgba(10 ,10,10,0.7)"
       }
       style={{ backdropFilter: "blur(4px)" }}
       maxH="14vh"

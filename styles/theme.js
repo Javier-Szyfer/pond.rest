@@ -37,6 +37,15 @@ const components = {
     }),
   },
 };
+
 // 3. extend the theme
-const theme = extendTheme({ config, styles, components });
+const theme = extendTheme({
+  config,
+  styles,
+  components,
+  // fonts: {
+  //   heading: "Open Sans",
+  //   body: "Open Sans",
+  // },
+});
 export default theme;
