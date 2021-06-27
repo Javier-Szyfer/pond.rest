@@ -28,7 +28,7 @@ import { MdClose, MdExpandLess, MdExpandMore } from "react-icons/md";
 export default function Player({ isOpen, onToggle }) {
   const { selectedTrack, setTrackData } = useMusicPlayer();
   const [expandMore, setExpandMore] = useState(false);
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [isMobile] = useMediaQuery("(max-width: 840px)");
   const { isOpen: isModalOpen, onOpen, onClose } = useDisclosure();
   return (
     <Slide direction="bottom" in={isOpen} style={{ zIndex: 999 }} unmountOnExit>
@@ -100,13 +100,15 @@ export default function Player({ isOpen, onToggle }) {
                   >
                     {selectedTrack?.artistName}
                   </Heading>
-                  <span style={{ marginRight: ".5rem" }}>-</span>
+                  <span style={{ marginRight: ".5rem", color: "#a8a8a8" }}>
+                    -
+                  </span>
                   <Heading
                     as="h5"
                     fontWeight="light"
                     fontSize="12px"
                     color="#a8a8a8"
-                    maxW={{ base: "150px", sm: "250px" }}
+                    maxW={{ base: "210px", sm: "280px" }}
                     isTruncated
                   >
                     {selectedTrack?.trackName}
@@ -147,9 +149,7 @@ export default function Player({ isOpen, onToggle }) {
                     color="rgb(133, 133, 133)"
                     size="20px"
                     onClick={() => {
-                      onToggle(),
-                        setTrackData(null),
-                        setExpandMore(!expandMore);
+                      onToggle(), setTrackData(null), setExpandMore(false);
                     }}
                   />
                 </Box>
