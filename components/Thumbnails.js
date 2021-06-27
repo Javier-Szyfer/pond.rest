@@ -4,7 +4,7 @@ import {
   SimpleGrid,
   Box,
   Text,
-  useColorMode,
+  // useColorMode,
   useMediaQuery,
 } from "@chakra-ui/react";
 import { formatDistance, parseISO } from "date-fns";
@@ -13,10 +13,10 @@ import { MusicPlayerContext } from "../context/AudioContext";
 import useMusicPlayer from "../hooks/useMusicPlayer";
 
 export default function Thumbnails({ onToggle, isOpen }) {
-  const { colorMode } = useColorMode();
+  // const { colorMode } = useColorMode();
   const [state] = useContext(MusicPlayerContext);
   const { playTrack } = useMusicPlayer();
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [isMobile] = useMediaQuery("(max-width: 840px)");
 
   //Light colors
 
@@ -68,8 +68,10 @@ export default function Thumbnails({ onToggle, isOpen }) {
           minH="100px"
           w="100%"
           h="100%"
+          bg="#131313"
+          _hover={{ bg: isMobile ? "none" : "#202020" }}
           // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
-          border="1px solid #505050"
+          // border="1px solid #505050"
           draggable
           boxShadow="rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
           onClick={() => handlePlay(tr)}
@@ -77,7 +79,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
             transform: "scale(0.95)",
             transition: "transform .3s ease-out",
           }}
-          p="0 1rem"
+          p="0 .5rem"
         >
           <Box
             w="100%"

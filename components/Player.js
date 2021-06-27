@@ -35,7 +35,7 @@ export default function Player({ isOpen, onToggle }) {
       <Box
         bg="rgba(10 ,10,10,0.8)"
         style={{ backdropFilter: "blur(3px)" }}
-        maxH={{ base: "100vh", md: "50vh" }}
+        maxH={isMobile ? "100vh" : "50vh"}
         p=".5rem 0"
         width="100vw"
       >
@@ -95,7 +95,6 @@ export default function Player({ isOpen, onToggle }) {
                     fontSize="12px"
                     mr=".5rem"
                     cursor="pointer"
-                    // onClick={onOpen}
                     color="#a8a8a8"
                   >
                     {selectedTrack?.artistName}
@@ -163,7 +162,13 @@ export default function Player({ isOpen, onToggle }) {
                       {selectedTrack?.artistName}
                     </Heading>
                     <Text fontSize="12px"> {selectedTrack?.trackName}</Text>
-                    <Box w={{ base: "30vh", sm: "50vh" }} m="1rem 0">
+                    <Box
+                      w={{ base: "30vh", sm: "50vh" }}
+                      m="1rem 0"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
                       <Image
                         src={selectedTrack?.urlImage}
                         alt="artist pic"
