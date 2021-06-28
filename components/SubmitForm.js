@@ -51,7 +51,9 @@ export default function SubmitForm() {
   return (
     <Box p="1rem 0">
       <form onSubmit={handleSubmit}>
-        <FormLabel mt=".5rem">Email </FormLabel>
+        <FormLabel mt=".5rem" color="#b3b3b3">
+          Email{" "}
+        </FormLabel>
         <Input
           type="email"
           variant="outline"
@@ -62,7 +64,9 @@ export default function SubmitForm() {
           _hover={{ borderColor: "#909090" }}
           borderColor="whiteAlpha.600"
         />
-        <FormLabel mt=".5rem">Link to your music or site </FormLabel>
+        <FormLabel mt=".5rem" color="#b3b3b3">
+          Link to your music or site{" "}
+        </FormLabel>
 
         <Input
           type="url"
@@ -74,7 +78,9 @@ export default function SubmitForm() {
           _hover={{ borderColor: "#909090" }}
           borderColor="whiteAlpha.600"
         />
-        <FormLabel mt=".5rem">Message </FormLabel>
+        <FormLabel mt=".5rem" color="#b3b3b3">
+          Message{" "}
+        </FormLabel>
         <Textarea
           placeholder="If you want to send us a message"
           value={message}
@@ -89,8 +95,13 @@ export default function SubmitForm() {
           variant="solid"
           mt="1rem"
           isDisabled={success}
-          bg="whiteAlpha.800"
-          _hover={{ bg: "whiteAlpha.400" }}
+          _hover={{ bg: "#606060" }}
+          style={{ backgroundColor: "#404040" }}
+          _active={{
+            transform: "scale(0.95)",
+            transition: "transform .3s ease-out",
+          }}
+          _focus={{ outline: 0 }}
         >
           Send
         </Button>

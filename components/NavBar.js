@@ -38,7 +38,7 @@ export default function Navigation() {
       <Container maxW="container.xl">
         <Flex w="full" alignItems="center" justifyContent="center">
           <NextLink href="/" passHref>
-            <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#909090">
+            <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#b3b3b3">
               Pond
             </Heading>
           </NextLink>
@@ -47,14 +47,14 @@ export default function Navigation() {
             cursor="pointer"
             as="h1"
             fontSize={sizeMe}
-            color="#909090"
+            color="#b3b3b3"
             onClick={onOpen}
             mr="2rem"
           >
             Get Featured
           </Heading>
           <NextLink href="/notes" passHref>
-            <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#909090">
+            <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#b3b3b3">
               Notes
             </Heading>
           </NextLink>
@@ -68,7 +68,9 @@ export default function Navigation() {
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>
-              <Heading fontSize="1rem">Get featured on Pond </Heading>
+              <Heading fontSize="1rem" color="#b3b3b3">
+                Get featured on Pond{" "}
+              </Heading>
             </ModalHeader>
             <ModalCloseButton _focus={{ borderColor: "none" }} />
             <ModalBody>

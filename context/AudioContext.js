@@ -8,7 +8,6 @@ const MusicPlayerProvider = (props) => {
   const [state, setState] = useState({});
 
   const { data: allTracks } = useSWR("api/getData", fetcher);
-  console.log(allTracks);
 
   useEffect(async () => {
     (await allTracks) &&
