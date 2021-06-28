@@ -112,7 +112,7 @@ export default function Home() {
           </form>
           {wontSpam && (
             <Text color="#b3b3b3" fontSize="14px" mt="4px">
-              we wont spam you, it's a promise
+              we wont spam you, it&aposs a promise
             </Text>
           )}
         </Box>
