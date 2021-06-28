@@ -13,39 +13,9 @@ import { MusicPlayerContext } from "../context/AudioContext";
 import useMusicPlayer from "../hooks/useMusicPlayer";
 
 export default function Thumbnails({ onToggle, isOpen }) {
-  // const { colorMode } = useColorMode();
   const [state] = useContext(MusicPlayerContext);
   const { playTrack } = useMusicPlayer();
   const [isMobile] = useMediaQuery("(max-width: 840px)");
-
-  //Light colors
-
-  const colorsLight = (i) => {
-    if (i >= 0 && i <= 3) {
-      return arrayOfColorsLight[0];
-    } else if (i >= 4 && i <= 7) {
-      return arrayOfColorsLight[1];
-    } else if (i >= 8 && i <= 11) {
-      return arrayOfColorsLight[2];
-    } else if (i >= 12 && i <= 15) {
-      return arrayOfColorsLight[3];
-    }
-  };
-  const arrayOfColorsLight = ["#FEFAE0", "#EED3DF", "#CAD4C4", "#9AC2C5"];
-
-  //Dark colors
-  const colorsDark = (i) => {
-    if (i >= 0 && i <= 3) {
-      return arrayOfColorsDark[0];
-    } else if (i >= 4 && i <= 7) {
-      return arrayOfColorsDark[1];
-    } else if (i >= 8 && i <= 11) {
-      return arrayOfColorsDark[2];
-    } else if (i >= 12 && i <= 15) {
-      return arrayOfColorsDark[3];
-    }
-  };
-  const arrayOfColorsDark = ["#5F5B6B", "#3D3B3C", "#323031", "#323031"];
 
   const handlePlay = (tr) => {
     playTrack(tr);
@@ -60,7 +30,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
       spacing={{ base: 2, sm: 4 }}
       m="2rem  0"
     >
-      {state.allTracks?.tracks?.map((tr, i) => (
+      {state.allTracks?.tracks?.map((tr) => (
         <Box
           key={tr.id}
           borderRadius="0.375rem"
@@ -72,7 +42,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
           minH="100px"
           w="100%"
           h="100%"
-          bg="#1f1f1f"
+          bg="#191919"
           _hover={{ bg: isMobile ? "whiteAlpha.200" : "whiteAlpha.100" }}
           // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
           // border="1px solid #505050"
@@ -98,7 +68,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
               fontWeight="bold"
               fontSize="sm"
               lineHeight="1.2"
-              color="#909090"
+              color="#b3b3b3"
             >
               {tr.artistName}
             </Text>
@@ -108,7 +78,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
               lineHeight="1.2"
               maxW={{ base: "220px", sm: "250px" }}
               textAlign="center"
-              color="#808080"
+              color="#b3b3b3"
               m="4px 0"
             >
               {tr.trackName}
@@ -120,7 +90,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
               position={isMobile ? "static" : "absolute"}
               bottom="8px"
               right="8px"
-              color="#808080"
+              color="#b3b3b3"
             >
               {formatDistance(
                 parseISO(tr.createdAt),
@@ -138,3 +108,29 @@ export default function Thumbnails({ onToggle, isOpen }) {
     </SimpleGrid>
   );
 }
+
+// const colorsLight = (i) => {
+//   if (i >= 0 && i <= 3) {
+//     return arrayOfColorsLight[0];
+//   } else if (i >= 4 && i <= 7) {
+//     return arrayOfColorsLight[1];
+//   } else if (i >= 8 && i <= 11) {
+//     return arrayOfColorsLight[2];
+//   } else if (i >= 12 && i <= 15) {
+//     return arrayOfColorsLight[3];
+//   }
+// };
+// const arrayOfColorsLight = ["#FEFAE0", "#EED3DF", "#CAD4C4", "#9AC2C5"];
+
+// const colorsDark = (i) => {
+//   if (i >= 0 && i <= 3) {
+//     return arrayOfColorsDark[0];
+//   } else if (i >= 4 && i <= 7) {
+//     return arrayOfColorsDark[1];
+//   } else if (i >= 8 && i <= 11) {
+//     return arrayOfColorsDark[2];
+//   } else if (i >= 12 && i <= 15) {
+//     return arrayOfColorsDark[3];
+//   }
+// };
+// const arrayOfColorsDark = ["#5F5B6B", "#3D3B3C", "#323031", "#323031"];

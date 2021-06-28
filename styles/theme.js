@@ -27,7 +27,6 @@ const components = {
     // 4. We can override existing variants
     solid: {
       bg: "#141214",
-      color: "red",
     },
   },
 
@@ -35,7 +34,7 @@ const components = {
     // setup light/dark mode component defaults
     baseStyle: {
       dialog: {
-        bg: "#141214",
+        bg: "#181818",
       },
     },
   },

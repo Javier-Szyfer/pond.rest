@@ -33,7 +33,7 @@ export default function Player({ isOpen, onToggle }) {
   return (
     <Slide direction="bottom" in={isOpen} style={{ zIndex: 999 }} unmountOnExit>
       <Box
-        bg={expandMore ? "rgba(15 ,15,15,0.7)" : "rgba(10 ,10,10,0.8)"}
+        bg={expandMore ? "rgba(15 ,15,15,0.7)" : "rgba(25 ,25,25,0.8)"}
         style={{ backdropFilter: "blur(3px)" }}
         maxH={isMobile ? "100vh" : "50vh"}
         p=".5rem 0"
@@ -61,14 +61,14 @@ export default function Player({ isOpen, onToggle }) {
               />
             </Box>
             <Box>
-              <Heading as="h4" fontSize="12px" color="#a8a8a8">
+              <Heading as="h4" fontSize="12px" color="#b3b3b3">
                 {selectedTrack?.artistName}
               </Heading>
               <Heading
                 as="h5"
                 fontWeight="light"
                 fontSize="12px"
-                color="#a8a8a8"
+                color="#b3b3b3"
               >
                 {selectedTrack?.trackName}
               </Heading>

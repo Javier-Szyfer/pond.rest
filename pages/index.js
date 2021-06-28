@@ -24,14 +24,19 @@ export default function Home() {
 
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [wontSpam, setWontSpam] = useState(false);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
+    setIsDisabled(true);
+    setWontSpam(true);
+
     try {
       await subscribeUser(email);
       setEmail("");
       setSubscribed(true);
+      setIsDisabled(false);
       subscribedOk();
     } catch (err) {
       console.log(err);
@@ -39,6 +44,7 @@ export default function Home() {
   };
   const subscribedOk = () => {
     setTimeout(() => {
+      setWontSpam(false);
       setSubscribed(false);
     }, 2000);
   };
@@ -53,7 +59,7 @@ export default function Home() {
           justifyContent="flex-start"
           alignItems="center"
         >
-          <Text color="#909090" fontWeight="normal">
+          <Text color="#b3b3b3" fontWeight="normal">
             This site is dedicated to those who enjoy music created with a
             modular synthesizer. Who find beauty in creating their
             <span style={{ fontWeight: "bold" }}> own instrument</span> and
@@ -69,7 +75,7 @@ export default function Home() {
         <Box maxW="500px">
           <Divider />
           <form onSubmit={handleSubscribe}>
-            <FormLabel color="#909090" mt=".5rem" fontWeight="medium">
+            <FormLabel color="#b3b3b3" mt=".5rem" fontWeight="medium">
               Keep up to date
             </FormLabel>
             <Box display="flex" justifyContent="flex-start" alignItems="center">
@@ -77,7 +83,7 @@ export default function Home() {
                 mr=".5rem"
                 type="email"
                 variant="outline"
-                borderColor="whiteAlpha.600"
+                borderColor="whiteAlpha.300"
                 required
                 value={email}
                 borderRadius="0.375rem"
@@ -94,8 +100,8 @@ export default function Home() {
                 _focus={{ borderColor: "#909090" }}
                 color="#909090"
                 mr=".5rem"
-                isDisabled={subscribed === true}
-                _hover={{ bg: "whiteAlpha.300" }}
+                isDisabled={isDisabled}
+                _hover={{ bg: "whiteAlpha.200" }}
               >
                 Submit
               </Button>
@@ -104,6 +110,11 @@ export default function Home() {
               )}
             </Box>
           </form>
+          {wontSpam && (
+            <Text color="#b3b3b3" fontSize="14px" mt="4px">
+              we wont spam you, it's a promise
+            </Text>
+          )}
         </Box>
         <Thumbnails onToggle={onToggle} isOpen={isOpen} />
         <Player isOpen={isOpen} onToggle={onToggle} />
