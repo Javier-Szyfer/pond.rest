@@ -19,7 +19,19 @@ import {
 export default function Notes({ posts }) {
   const [isMobile] = useMediaQuery("(max-width: 840px)");
 
-  console.log(posts);
+  if (!posts) {
+    return (
+      <Container maxW="xl" mx="auto" pt="3rem">
+        <Heading size="xl" as="h1" mr="4px">
+          Notes
+        </Heading>
+        <Heading size="md" as="h1" fontWeight="normal" color="#b3b3b3">
+          &rarr; <span> Interviews with modular artists around the globe</span>
+        </Heading>
+        <Divider m="2rem 0" />
+      </Container>
+    );
+  }
   return (
     <Container maxW="xl" mx="auto" pt="3rem">
       <Heading size="xl" as="h1" mr="4px">
