@@ -17,4 +17,7 @@ module.exports = withMDX({
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  eslint: {
+    dirs: ["pages", "utils"], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
+  },
 });
