@@ -54,24 +54,18 @@ const TData = (props) => (
 );
 
 const CustomLink = (props) => {
-  const { colorMode } = useColorMode();
-  const color = {
-    light: "hsl(208, 99%, 44%)",
-    dark: "hsl(208, 95%, 68%)",
-  };
-
   const href = props.href;
   const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
 
   if (isInternalLink) {
     return (
       <NextLink href={href} passHref>
-        <Link color={color[colorMode]} {...props} />
+        <Link {...props} />
       </NextLink>
     );
   }
 
-  return <Link color={color[colorMode]} isExternal {...props} />;
+  return <Link isExternal {...props} />;
 };
 
 const Quote = (props) => {
@@ -154,39 +148,35 @@ const Hr = () => {
   return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />;
 };
 
-export default function MDXComponents() {
-  return {
-    h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
-    h2: (props) => (
-      <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />
-    ),
-    h3: (props) => (
-      <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />
-    ),
-    inlineCode: (props) => <Code fontSize="0.84em" {...props} />,
-    pre: (props) => (
-      <Code
-        display="block"
-        whiteSpace="pre-wrap"
-        borderRadius={6}
-        my={4}
-        p={4}
-        {...props}
-      />
-    ),
-    kbd: Kbd,
-    br: (props) => <Box height="24px" {...props} />,
-    hr: Hr,
-    table: Table,
-    th: THead,
-    td: TData,
-    a: CustomLink,
-    p: (props) => <Text as="p" mt={4} lineHeight="all" {...props} />,
-    ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
-    ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
-    li: (props) => <Box as="li" pb={1} {...props} />,
-    blockquote: Quote,
-  };
-}
+const MDXComponents = {
+  h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
+  h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
+  h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
+  inlineCode: (props) => <Code fontSize="0.84em" {...props} />,
+  pre: (props) => (
+    <Code
+      display="block"
+      whiteSpace="pre-wrap"
+      borderRadius={6}
+      my={4}
+      p={4}
+      {...props}
+    />
+  ),
+  kbd: Kbd,
+  br: (props) => <Box height="24px" {...props} />,
+  hr: Hr,
+  table: Table,
+  th: THead,
+  td: TData,
+  a: CustomLink,
+  p: (props) => <Text as="p" mt={4} lineHeight="tall" {...props} />,
+  ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
+  ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
+  li: (props) => <Box as="li" pb={1} {...props} />,
+  blockquote: Quote,
+};
 
+MDXComponents.displayName = "MDXComponents";
 export { CustomLink };
+export default MDXComponents;
