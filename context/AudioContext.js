@@ -7,7 +7,7 @@ const MusicPlayerContext = createContext([{}, () => {}]);
 const MusicPlayerProvider = (props) => {
   const [state, setState] = useState({});
 
-  const { data: allTracks } = useSWR("api/getData", fetcher);
+  const { data: allTracks } = useSWR("/api/getData", fetcher);
 
   useEffect(async () => {
     (await allTracks) &&
@@ -17,7 +17,7 @@ const MusicPlayerProvider = (props) => {
         selectedTrack: null,
       });
   }, [allTracks]);
-  console.log(state);
+  // console.log(state);
 
   return (
     <MusicPlayerContext.Provider value={[state, setState]}>

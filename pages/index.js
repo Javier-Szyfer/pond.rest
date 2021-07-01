@@ -59,9 +59,13 @@ export default function Home() {
           justifyContent="flex-start"
           alignItems="center"
         >
-          <Text color="#b3b3b3" fontWeight="normal">
+          <Text
+            color="#b3b3b3"
+            fontWeight="normal"
+            mt={{ base: 0, sm: "18rem" }}
+          >
             This site is dedicated to those who enjoy music created with a
-            modular synthesizer. Who find beauty in creating their
+            modular synthesizer. <br /> Who find beauty in creating their
             <span style={{ fontWeight: "bold" }}> own instrument</span> and
             therefore a{" "}
             <span style={{ fontWeight: "bold" }}> personal sound.</span> <br />

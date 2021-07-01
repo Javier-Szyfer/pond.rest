@@ -4,6 +4,7 @@ import {
   SimpleGrid,
   Box,
   Text,
+  Spinner,
   // useColorMode,
   useMediaQuery,
 } from "@chakra-ui/react";
@@ -24,15 +25,29 @@ export default function Thumbnails({ onToggle, isOpen }) {
     }
   };
 
+  if (!state?.allTracks) {
+    return (
+      <Box
+        w="full"
+        mt="4rem"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Spinner />
+      </Box>
+    );
+  }
   return (
     <SimpleGrid
       columns={{ base: 1, sm: 2, md: 4 }}
-      spacing={{ base: 2, sm: 4 }}
+      spacing={{ base: 3, sm: 4 }}
       m="2rem  0"
     >
       {state.allTracks?.tracks?.map((tr) => (
         <Box
           key={tr.id}
+          className="card"
           borderRadius="0.375rem"
           display="flex"
           flexDirection="column"
@@ -42,17 +57,16 @@ export default function Thumbnails({ onToggle, isOpen }) {
           minH="100px"
           w="100%"
           h="100%"
-          bg="#191919"
-          _hover={{ bg: isMobile ? "whiteAlpha.200" : "whiteAlpha.100" }}
+          bg="#141414"
+          _hover={{ bg: isMobile ? "#181818" : "#181818" }}
           // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
           // border="1px solid #505050"
-          draggable
           boxShadow="rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
-          onClick={() => handlePlay(tr)}
           _active={{
             transform: "scale(0.95)",
             transition: "transform .3s ease-out",
           }}
+          onClick={() => handlePlay(tr)}
           p="0 .5rem"
         >
           <Box
