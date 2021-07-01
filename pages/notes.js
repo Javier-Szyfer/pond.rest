@@ -46,7 +46,7 @@ export default function Notes({ posts }) {
               _hover={{ bg: isMobile ? "#181818" : "#181818" }}
             >
               <Heading size="sm" mb="1rem">
-                "{p.meta.data.snippet}"
+                &quot;{p.meta.data.snippet}&quot;
               </Heading>
 
               <Divider mb="1rem" />

@@ -28,8 +28,12 @@ export default function PostLayout({ children, meta }) {
   const [state] = useContext(MusicPlayerContext);
   const { playTrack } = useMusicPlayer();
 
-  useEffect(async () => {
-    if (state.allTracks) setTracks(state?.allTracks.tracks);
+  useEffect(() => {
+    async function trackSetter() {
+      const receivedTracksFromCtx = await state?.allTracks?.tracks;
+      setTracks(receivedTracksFromCtx);
+    }
+    trackSetter();
   }, [state]);
 
   console.log(meta);
@@ -52,7 +56,7 @@ export default function PostLayout({ children, meta }) {
   return (
     <Container maxW="container.md" my="auto" p="4rem 1rem 6rem 1rem">
       <Head>
-        <title>Notes - "{meta.snippet}"</title>
+        <title>Notes - &quot;{meta.snippet}&quot;</title>
       </Head>
 
       <Box display="flex" flexDirection="column" w="100%">
@@ -66,10 +70,12 @@ export default function PostLayout({ children, meta }) {
           >
             {format(new Date(meta.date), "PP")}
           </Text>
-          <Link href="/notes">
-            <Button size="xs" variant="outline">
-              &larr; Back
-            </Button>
+          <Link href="/notes" passHref>
+            <a>
+              <Button size="xs" variant="outline">
+                &larr; Back
+              </Button>
+            </a>
           </Link>
         </Flex>
         <Box w="300px">
