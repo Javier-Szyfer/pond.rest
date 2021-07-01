@@ -36,7 +36,7 @@ export default function PostLayout({ children, meta }) {
     trackSetter();
   }, [state]);
 
-  console.log(meta);
+  // console.log(meta);
 
   // const { meta } = frontMatter;
 

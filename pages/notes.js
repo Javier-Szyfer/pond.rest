@@ -84,6 +84,7 @@ export default function Notes({ posts }) {
 
 export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), "pages/posts");
+
   const filenames = await fs.readdir(postsDirectory);
 
   const files = await Promise.all(
