@@ -18,8 +18,9 @@ import {
 
 export default function Notes({ posts }) {
   const [isMobile] = useMediaQuery("(max-width: 840px)");
+  console.log(posts);
 
-  if (!posts) {
+  if (!posts || posts[0].meta.content === "") {
     return (
       <Container maxW="xl" mx="auto" pt="3rem">
         <Heading size="xl" as="h1" mr="4px">
