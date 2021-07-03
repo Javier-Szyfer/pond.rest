@@ -34,7 +34,7 @@ export default function Thumbnails({ onToggle, isOpen }) {
         justifyContent="center"
         alignItems="center"
       >
-        <Spinner />
+        <Spinner color="#b3b3b3" />
       </Box>
     );
   }

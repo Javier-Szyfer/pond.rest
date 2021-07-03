@@ -26,7 +26,7 @@ export default function AdminDashboard() {
   const [image, setImage] = useState("");
   const [file, setFile] = useState("");
   const [audio, setAudio] = useState("");
-  console.log(image);
+  // console.log(image);
 
   const date = new Date().toISOString();
 
@@ -153,7 +153,6 @@ export default function AdminDashboard() {
                   Artists Contact Link
                 </FormLabel>
                 <Input
-                  required
                   mb="1rem"
                   type="url"
                   variant="outline"
