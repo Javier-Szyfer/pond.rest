@@ -60,8 +60,8 @@ export default function Player({ isOpen, onToggle }) {
                 objectFit="cover"
               />
             </Box>
-            <Box>
-              <Heading as="h4" fontSize="12px" color="#b3b3b3">
+            <Box onClick={onOpen}>
+              <Heading as="h4" fontSize="12px" color="#b3b3b3" cursor="pointer">
                 {selectedTrack?.artistName}
               </Heading>
               <Heading
@@ -69,6 +69,7 @@ export default function Player({ isOpen, onToggle }) {
                 fontWeight="light"
                 fontSize="12px"
                 color="#b3b3b3"
+                cursor="pointer"
               >
                 {selectedTrack?.trackName}
               </Heading>

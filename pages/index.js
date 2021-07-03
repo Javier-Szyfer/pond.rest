@@ -77,7 +77,7 @@ export default function Home() {
         </Box>
 
         <Box maxW="500px">
-          <Divider />
+          <Divider bg="#808080" />
           <form onSubmit={handleSubscribe}>
             <FormLabel color="#b3b3b3" mt=".5rem" fontWeight="medium">
               Keep up to date
