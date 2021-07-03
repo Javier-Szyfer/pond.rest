@@ -54,7 +54,7 @@ export default function Home() {
       <Container maxW="container.xl">
         <Box
           p="2rem 0 12px 0"
-          maxW={{ base: "300px", sm: "500px", md: "800px" }}
+          maxW={{ base: "300px", sm: "500px", md: "800px", lg: "1000px" }}
           display="flex"
           justifyContent="flex-start"
           alignItems="center"
@@ -69,7 +69,7 @@ export default function Home() {
             <span style={{ fontWeight: "bold" }}> own instrument</span> and
             therefore a{" "}
             <span style={{ fontWeight: "bold" }}> personal sound.</span> <br />
-            Patching for a specific result or just to see what happens.{" "}
+            Patching for a specific result or just to see what happens. <br />
             <span style={{ fontWeight: "bold" }}>
               An intimate relationship with machines.
             </span>

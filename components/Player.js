@@ -177,22 +177,24 @@ export default function Player({ isOpen, onToggle }) {
                         objectFit="cover"
                       />
                     </Box>
-                    <Text
-                      fontSize="12px"
-                      display="flex"
-                      justifyContent="center"
-                    >
-                      Listen more of {selectedTrack?.artistName}s music
-                      <NextLink href={selectedTrack?.artistContact} passHref>
-                        <a
-                          target="_blank"
-                          rel="noopener"
-                          style={{ marginLeft: "4px", fontWeight: "bold" }}
-                        >
-                          here
-                        </a>
-                      </NextLink>
-                    </Text>
+                    {selectedTrack?.artistContact && (
+                      <Text
+                        fontSize="12px"
+                        display="flex"
+                        justifyContent="center"
+                      >
+                        Listen more of {selectedTrack?.artistName}s music
+                        <NextLink href={selectedTrack?.artistContact} passHref>
+                          <a
+                            target="_blank"
+                            rel="noopener"
+                            style={{ marginLeft: "4px", fontWeight: "bold" }}
+                          >
+                            here
+                          </a>
+                        </NextLink>
+                      </Text>
+                    )}
                   </Box>
                 )}
               </Box>
@@ -257,18 +259,20 @@ export default function Player({ isOpen, onToggle }) {
                   objectFit="cover"
                 />
               </Box>
-              <Text fontSize="12px" display="flex" justifyContent="center">
-                Listen more of {selectedTrack?.artistName}s music
-                <NextLink href={selectedTrack?.artistContact} passHref>
-                  <a
-                    target="_blank"
-                    rel="noopener"
-                    style={{ marginLeft: "4px", fontWeight: "bold" }}
-                  >
-                    here
-                  </a>
-                </NextLink>
-              </Text>
+              {selectedTrack?.artistContact && (
+                <Text fontSize="12px" display="flex" justifyContent="center">
+                  Listen more of {selectedTrack?.artistName}s music
+                  <NextLink href={selectedTrack?.artistContact} passHref>
+                    <a
+                      target="_blank"
+                      rel="noopener"
+                      style={{ marginLeft: "4px", fontWeight: "bold" }}
+                    >
+                      here
+                    </a>
+                  </NextLink>
+                </Text>
+              )}
             </Box>
           </ModalBody>
         </ModalContent>
