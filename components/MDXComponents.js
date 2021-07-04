@@ -139,13 +139,7 @@ const DocsHeading = (props) => (
 );
 
 const Hr = () => {
-  const { colorMode } = useColorMode();
-  const borderColor = {
-    light: "gray.200",
-    dark: "gray.600",
-  };
-
-  return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />;
+  return <Divider bg="#313131" my={4} w="100%" />;
 };
 
 const MDXComponents = {
@@ -165,7 +159,7 @@ const MDXComponents = {
   ),
   kbd: Kbd,
   br: (props) => <Box height="24px" {...props} />,
-  hr: Hr,
+  hr: (props) => <Divider bg="#313131" my={4} w="100%" {...props} />,
   table: Table,
   th: THead,
   td: TData,
