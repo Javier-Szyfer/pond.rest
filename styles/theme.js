@@ -1,4 +1,3 @@
-// 1. import `extendTheme` function
 import { extendTheme } from "@chakra-ui/react";
 // import { mode } from "@chakra-ui/theme-tools";
 
@@ -15,6 +14,10 @@ const styles = {
       bg: "rgb(10,10,10)",
     },
   },
+};
+const fonts = {
+  heading: "Work Sans",
+  body: "Work Sans",
 };
 
 const components = {
@@ -45,5 +48,9 @@ const theme = extendTheme({
   // config,
   styles,
   components,
+  // fonts: {
+  //   heading: "IBM Plex Mono",
+  //   body: "IBM Plex Mono",
+  // },
 });
 export default theme;
