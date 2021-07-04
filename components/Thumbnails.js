@@ -16,7 +16,7 @@ import useMusicPlayer from "../hooks/useMusicPlayer";
 export default function Thumbnails({ onToggle, isOpen }) {
   const [state] = useContext(MusicPlayerContext);
   const { playTrack } = useMusicPlayer();
-  const [isMobile] = useMediaQuery("(max-width: 840px)");
+  const [isMobile] = useMediaQuery("(max-width: 1025px)");
 
   const handlePlay = (tr) => {
     playTrack(tr);
@@ -38,9 +38,97 @@ export default function Thumbnails({ onToggle, isOpen }) {
       </Box>
     );
   }
+  if (!isMobile) {
+    return (
+      <SimpleGrid columns={{ base: 2 }}>
+        <SimpleGrid
+          columns={{ base: 1, sm: 2, md: 2 }}
+          spacing={{ base: 3, sm: 4 }}
+          m="2rem  0"
+        >
+          {state.allTracks?.tracks?.map((tr) => (
+            <Box
+              key={tr.id}
+              className="card"
+              borderRadius="0.375rem"
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              cursor="pointer"
+              minW="100px"
+              minH="100px"
+              w="100%"
+              h="100%"
+              bg="#141414"
+              _hover={{ bg: isMobile ? "#181818" : "#181818" }}
+              // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
+              // border="1px solid #505050"
+              boxShadow="rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
+              _active={{
+                transform: "scale(0.95)",
+                transition: "transform .3s ease-out",
+              }}
+              onClick={() => handlePlay(tr)}
+              p="0 .5rem"
+            >
+              <Box
+                w="100%"
+                h="100%"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+                position="relative"
+              >
+                <Text
+                  fontWeight="bold"
+                  fontSize="sm"
+                  lineHeight="1.2"
+                  color="#b3b3b3"
+                >
+                  {tr.artistName}
+                </Text>
+                <Text
+                  fontSize="xs"
+                  fontWeight="normal"
+                  lineHeight="1.2"
+                  maxW={{ base: "220px", sm: "250px" }}
+                  textAlign="center"
+                  color="#b3b3b3"
+                  m="4px 0"
+                >
+                  {tr.trackName}
+                </Text>
+
+                <Text
+                  fontSize="10px"
+                  fontWeight="light"
+                  position={isMobile ? "static" : "absolute"}
+                  bottom="8px"
+                  right="8px"
+                  color="#b3b3b3"
+                >
+                  {formatDistance(
+                    parseISO(tr.createdAt),
+                    new Date(),
+
+                    {
+                      includeSeconds: true,
+                      addSuffix: true,
+                    }
+                  ).replace("about", "")}
+                </Text>
+              </Box>
+            </Box>
+          ))}
+        </SimpleGrid>
+        <Box></Box>
+      </SimpleGrid>
+    );
+  }
   return (
     <SimpleGrid
-      columns={{ base: 1, sm: 2, md: 4 }}
+      columns={{ base: 1, sm: 2, md: 2 }}
       spacing={{ base: 3, sm: 4 }}
       m="2rem  0"
     >
