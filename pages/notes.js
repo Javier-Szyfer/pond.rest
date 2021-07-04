@@ -27,7 +27,8 @@ export default function Notes({ posts }) {
           Notes
         </Heading>
         <Heading size="md" as="h1" fontWeight="normal" color="#b3b3b3">
-          &rarr; <span> Interviews with modular artists around the globe</span>
+          {/* &rarr; */}
+          <span> Interviews with modular artists around the globe</span>
         </Heading>
         <Divider m="2rem 0" bg="#313131" />
       </Container>
@@ -39,7 +40,8 @@ export default function Notes({ posts }) {
         Notes
       </Heading>
       <Heading size="md" as="h1" fontWeight="normal" color="#b3b3b3">
-        &rarr; <span> Interviews with modular artists around the globe</span>
+        {/* &rarr; */}
+        <span> Interviews with modular artists around the globe</span>
       </Heading>
       <Divider m="2rem 0" />
 
