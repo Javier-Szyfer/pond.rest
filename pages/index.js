@@ -11,7 +11,7 @@ import {
   Button,
   useDisclosure,
   Divider,
-  // useMediaQuery,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 import Thumbnails from "../components/Thumbnails";
@@ -20,7 +20,7 @@ import { MdSentimentSatisfied } from "react-icons/md";
 
 export default function Home() {
   const { isOpen, onToggle } = useDisclosure();
-  // const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [isMobile] = useMediaQuery("(max-width: 480px)");
 
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -54,15 +54,16 @@ export default function Home() {
       <Container maxW="container.xl">
         <Box
           p="2rem 0 12px 0"
-          maxW={{ base: "300px", sm: "500px", md: "800px", lg: "1000px" }}
+          maxW={{ base: "400px", sm: "500px", md: "800px", lg: "1000px" }}
           display="flex"
-          justifyContent="flex-start"
-          alignItems="center"
+          // justifyContent="flex-start"
+          // alignItems="flex-end"
         >
           <Text
             color="#b3b3b3"
             fontWeight="normal"
             mt={{ base: 0, sm: "18rem" }}
+            // textAlign={isMobile ? "center" : "left"}
           >
             This site is dedicated to those who enjoy music created with a
             modular synthesizer. <br /> Who find beauty in creating their
