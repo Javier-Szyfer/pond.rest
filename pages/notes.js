@@ -64,7 +64,7 @@ export default function Notes({ posts }) {
                 &quot;{p.meta.data.snippet}&quot;
               </Heading>
 
-              <Divider mb="1rem" />
+              <Divider mb="1rem" bg="#313131" />
               <Flex w="full" alignItems="center">
                 {/* <Box w="100px" mr="2rem" rounded="lg"> */}
                 <Image

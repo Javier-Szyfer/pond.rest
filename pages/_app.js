@@ -7,7 +7,6 @@ import { DefaultSeo } from "next-seo";
 import SEO from "../next-seo.config";
 
 import Fonts from "../public/fonts/Fonts";
-import "@fontsource/ibm-plex-mono/200.css";
 
 import { MDXProvider } from "@mdx-js/react";
 import MDXComponents from "../components/MDXComponents";

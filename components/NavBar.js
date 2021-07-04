@@ -38,9 +38,12 @@ export default function Navigation() {
       <Container maxW="container.xl">
         <Flex w="full" alignItems="center" justifyContent="center">
           <NextLink href="/" passHref>
-            <Heading cursor="pointer" as="h1" fontSize={sizeMe} color="#b3b3b3">
-              Pond
-            </Heading>
+            <Heading
+              cursor="pointer"
+              as="h1"
+              fontSize={sizeMe}
+              color="#b3b3b3"
+            ></Heading>
           </NextLink>
           <Spacer />
           <Heading
