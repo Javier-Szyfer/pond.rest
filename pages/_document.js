@@ -41,6 +41,20 @@ export default class Document extends NextDocument {
           <link rel="manifest" href="/favicons/site.webmanifest" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
+          <meta
+            name="twitter:card"
+            content="summary_large_image"
+            key="twcard"
+          />
+          <meta
+            property="og:image"
+            content="https://pond.rest/og.png"
+            key="ogimage"
+          />
+          <meta
+            property="og:image:alt"
+            content="the open graph picture for pond.rest site"
+          />
         </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
