@@ -157,12 +157,16 @@ export default function Navigation() {
             <MenuList
               bg="rgba(10 ,10,10,0.9)"
               style={{ backdropFilter: "blur(2px)" }}
-              borderColor="blue"
+              borderColor="#606060"
               minW="0"
-              w="200px"
-              p="0"
+              w="150px"
+              p="2px"
             >
-              <MenuItem display="flex" justifyContent="flex-end">
+              <MenuItem
+                display="flex"
+                justifyContent="flex-end"
+                _focus={{ bg: "rgba(10 ,10,10,0.7)" }}
+              >
                 <Heading
                   cursor="pointer"
                   as="h2"
@@ -174,7 +178,11 @@ export default function Navigation() {
                 </Heading>
               </MenuItem>
               <NextLink href="/notes" passHref>
-                <MenuItem display="flex" justifyContent="flex-end">
+                <MenuItem
+                  display="flex"
+                  justifyContent="flex-end"
+                  _focus={{ bg: "rgba(10 ,10,10,0.7)" }}
+                >
                   <Heading
                     cursor="pointer"
                     as="h1"
@@ -190,7 +198,11 @@ export default function Navigation() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <MenuItem display="flex" justifyContent="flex-end">
+                <MenuItem
+                  display="flex"
+                  justifyContent="flex-end"
+                  _focus={{ bg: "rgba(10 ,10,10,0.7)" }}
+                >
                   <Heading
                     cursor="pointer"
                     as="h2"
