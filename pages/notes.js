@@ -7,7 +7,6 @@ import matter from "gray-matter";
 import {
   Container,
   Box,
-  Text,
   Divider,
   Heading,
   useMediaQuery,
@@ -18,6 +17,7 @@ import {
 
 export default function Notes({ posts }) {
   const [isMobile] = useMediaQuery("(max-width: 840px)");
+
   // console.log(posts);
 
   if (!posts || posts[0].meta.content === "") {

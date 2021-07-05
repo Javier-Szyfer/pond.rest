@@ -24,14 +24,14 @@ import {
 } from "@chakra-ui/react";
 
 import SubmitForm from "./SubmitForm";
-import { MdControlPoint } from "react-icons/md";
+// import { MdApps, MdRadioButtonUnchecked, MdMoreVert } from "react-icons/md";
 
 export default function Navigation() {
   const router = useRouter();
   const { pathname } = router;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [isMobile] = useMediaQuery("(max-width: 1023px)");
 
   const sizeMe = useBreakpointValue({ base: ".9rem", md: "1rem" });
 
@@ -56,7 +56,7 @@ export default function Navigation() {
                 fontSize={sizeMe}
                 color="#b3b3b3"
               >
-                {pathname === "/notes" ? "Pond" : ""}
+                {pathname === "/notes" || isMobile ? "Pond" : ""}
               </Heading>
             </NextLink>
             <Spacer />
@@ -141,18 +141,38 @@ export default function Navigation() {
             </Heading>
           </NextLink>
           <Spacer />
+          <Heading
+            cursor="pointer"
+            as="h2"
+            fontSize={sizeMe}
+            color="#b3b3b3"
+            onClick={onOpen}
+            mr="1rem"
+          >
+            Get Featured
+          </Heading>
+
           <Menu>
             <MenuButton
-              as={Button}
               size="xs"
               aria-label="Options"
-              variant="unstyle"
               bg="transparent"
               _focus={{ outline: 0, bg: "transparent" }}
               _active={{ bg: "transparent" }}
               _selected={{ bg: "transparent" }}
             >
-              <MdControlPoint color="#b3b3b3" fontSize="20px" />
+              <Box
+                color="#b3b3b3"
+                bg="#b3b3b3"
+                rounded="full"
+                w="14px"
+                h="14px"
+                cursor="pointer"
+                _active={{
+                  transform: "scale(0.95)",
+                  transition: "transform .3s ease-out",
+                }}
+              />
             </MenuButton>
             <MenuList
               bg="rgba(10 ,10,10,0.9)"
@@ -162,22 +182,6 @@ export default function Navigation() {
               w="150px"
               p="2px"
             >
-              <MenuItem
-                display="flex"
-                justifyContent="flex-end"
-                _focus={{ bg: "rgba(10 ,10,10,0.7)" }}
-                _active={{ bg: "rgba(10 ,10,10,0.7)" }}
-              >
-                <Heading
-                  cursor="pointer"
-                  as="h2"
-                  fontSize={sizeMe}
-                  color="#b3b3b3"
-                  onClick={onOpen}
-                >
-                  Get Featured
-                </Heading>
-              </MenuItem>
               <NextLink href="/notes" passHref>
                 <MenuItem
                   display="flex"

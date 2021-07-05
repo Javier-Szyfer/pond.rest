@@ -77,7 +77,7 @@ export default function Home() {
           This site is dedicated to those who enjoy music created with a modular
           synthesizer. <br /> Who find beauty in creating their
           <span style={{ fontWeight: "bold" }}> own instrument</span> and
-          therefore a - personal sound - <br />
+          therefore a -&nbsp;personal&nbsp;sound&nbsp;- <br />
           Patching for a specific result or just to see what happens. <br />
           <span style={{ fontWeight: "bold" }}>
             An intimate relationship with machines.
