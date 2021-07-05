@@ -6,9 +6,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuGroup,
-  MenuIcon,
-  IconButton,
+  Button,
   Heading,
   Container,
   Box,
@@ -143,14 +141,15 @@ export default function Navigation() {
             </Heading>
           </NextLink>
           <Spacer />
-          <Menu isLazy>
+          <Menu>
             <MenuButton
-              as={IconButton}
+              as={Button}
               aria-label="Options"
-              icon={<MdControlPoint />}
               variant="ghost"
               _focus={{ outline: 0 }}
-            ></MenuButton>
+            >
+              <MdControlPoint />
+            </MenuButton>
             <MenuList
               bg="rgba(10 ,10,10,0.9)"
               style={{ backdropFilter: "blur(4px)" }}
