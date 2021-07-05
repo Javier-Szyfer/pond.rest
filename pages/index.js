@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 
 import { subscribeUser } from "../lib/db";
 
@@ -20,7 +21,10 @@ import { MdSentimentSatisfied } from "react-icons/md";
 
 export default function Home() {
   const { isOpen, onToggle } = useDisclosure();
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [isMobile] = useMediaQuery([
+    "(max-width: 767px",
+    // "(display-mode: browser )",
+  ]);
 
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -48,16 +52,15 @@ export default function Home() {
       setSubscribed(false);
     }, 2000);
   };
-
-  return (
-    <>
-      <Container maxW="container.xl">
-        {!isMobile ? (
-          <Box w="50%">
+  if (!isMobile) {
+    return (
+      <>
+        <Container maxW="container.xl">
+          <Box>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 428.07 285.86"
-              style={{ fill: "#b3b3b3" }}
+              style={{ fill: "#b3b3b3", width: "50%" }}
             >
               <defs></defs>
               <g id="Layer_2" data-name="Layer 2">
@@ -70,11 +73,84 @@ export default function Home() {
               </g>
             </svg>
           </Box>
-        ) : null}
+
+          <Box p="2rem 0 0 0" maxW={{ md: "700px" }} display="flex">
+            <Text color="#b3b3b3" fontWeight="normal">
+              This site is dedicated to those who enjoy music created with a
+              modular synthesizer. <br /> Who find beauty in creating their
+              <span style={{ fontWeight: "bold" }}> own instrument</span> and
+              therefore a{" "}
+              <span style={{ fontWeight: "bold" }}> personal sound.</span>{" "}
+              <br />
+              Patching for a specific result or just to see what happens. <br />
+              <span style={{ fontWeight: "bold" }}>
+                An intimate relationship with machines.
+              </span>
+            </Text>
+          </Box>
+
+          <Divider bg="#313131" maxW="600px" mt="12px" />
+          <Box maxW="500px">
+            <form onSubmit={handleSubscribe}>
+              <FormLabel color="#b3b3b3" mt=".5rem" fontWeight="medium">
+                Keep up to date
+              </FormLabel>
+              <Box
+                display="flex"
+                justifyContent="flex-start"
+                alignItems="center"
+              >
+                <Input
+                  mr=".5rem"
+                  type="email"
+                  variant="outline"
+                  borderColor="whiteAlpha.300"
+                  required
+                  value={email}
+                  borderRadius="0.375rem"
+                  onChange={(e) => setEmail(e.target.value)}
+                  _focus={{ borderColor: "#909090" }}
+                  _hover={{ borderColor: "#909090" }}
+                  maxW="60%"
+                  placeholder="email"
+                  _placeholder={{ color: "#505050" }}
+                />
+                <Button
+                  type="submit"
+                  variant="solid"
+                  _focus={{ borderColor: "#909090" }}
+                  color="#909090"
+                  mr=".5rem"
+                  isDisabled={isDisabled}
+                  _hover={{ bg: "whiteAlpha.200" }}
+                >
+                  Submit
+                </Button>
+                {subscribed && (
+                  <MdSentimentSatisfied color="#80CFA9" size="24px" />
+                )}
+              </Box>
+            </form>
+            {wontSpam && (
+              <Text color="#b3b3b3" fontSize="14px" mt="4px">
+                we wont spam you, it&aposs a promise
+              </Text>
+            )}
+          </Box>
+          <Thumbnails onToggle={onToggle} isOpen={isOpen} />
+          <Player isOpen={isOpen} onToggle={onToggle} />
+        </Container>
+      </>
+    );
+  }
+  return (
+    <>
+      <Container maxW="container.xl">
         <Box
-          p="2rem 0 12px 0"
-          maxW={{ base: "400px", sm: "500px", md: "50%", lg: "1000px" }}
+          pb="12px"
+          maxW={{ base: "500px", sm: "500px", md: "700px", lg: "1000px" }}
           display="flex"
+          w="100%"
         >
           <Text color="#b3b3b3" fontWeight="normal">
             This site is dedicated to those who enjoy music created with a
@@ -88,11 +164,17 @@ export default function Home() {
             </span>
           </Text>
         </Box>
+        <Divider bg="#313131" m="1rem 0" maxW="500px" />
 
-        <Box maxW="500px">
-          <Divider bg="#313131" />
+        <Box
+          maxW="500px"
+          p="0"
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-start"
+        >
           <form onSubmit={handleSubscribe}>
-            <FormLabel color="#b3b3b3" mt=".5rem" fontWeight="medium">
+            <FormLabel color="#b3b3b3" fontWeight="medium">
               Keep up to date
             </FormLabel>
             <Box display="flex" justifyContent="flex-start" alignItems="center">
