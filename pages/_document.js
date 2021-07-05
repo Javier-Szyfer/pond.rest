@@ -6,6 +6,20 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-ND3P7D75XM"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ND3P7D75XM');
+        `,
+            }}
+          />
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
           <link
             rel="apple-touch-icon"
@@ -27,18 +41,6 @@ export default class Document extends NextDocument {
           <link rel="manifest" href="/favicons/site.webmanifest" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
-
-          {/* <meta
-            content="/favicons/browserconfig.xml"
-            name="msapplication-config"
-          />
-          <link href="/favicons/favicon.ico" rel="shortcut icon" />
-          <link href="/favicons/site.webmanifest" rel="manifest" /> */}
-          {/* <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-            rel="stylesheet"
-          /> */}
-          {/* <link rel="stylesheet" href="/fonts/fonts.css" /> */}
         </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
