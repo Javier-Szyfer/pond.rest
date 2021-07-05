@@ -1,7 +1,9 @@
 ::selection {
   background-color: rgb(62, 62, 62);
 }
-
+.svgLogo {
+  display: block;
+}
 .card {
   position: relative;
 }
@@ -216,6 +218,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .svgLogo {
+    display: none;
+  }
+
   .rhap_volume-bar {
     display: none;
   }
