@@ -31,7 +31,7 @@ export default function Navigation() {
   const { pathname } = router;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isMobile] = useMediaQuery("(max-width: 1024px)");
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   const sizeMe = useBreakpointValue({ base: ".9rem", md: "1rem" });
 
