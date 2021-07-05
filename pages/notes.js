@@ -18,7 +18,7 @@ import {
 
 export default function Notes({ posts }) {
   const [isMobile] = useMediaQuery("(max-width: 840px)");
-  console.log(posts);
+  // console.log(posts);
 
   if (!posts || posts[0].meta.content === "") {
     return (
