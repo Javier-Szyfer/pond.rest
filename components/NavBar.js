@@ -144,17 +144,25 @@ export default function Navigation() {
           <Menu>
             <MenuButton
               as={Button}
+              size="xs"
               aria-label="Options"
-              variant="ghost"
-              _focus={{ outline: 0 }}
+              variant="unstyle"
+              bg="transparent"
+              _focus={{ outline: 0, bg: "transparent" }}
+              _active={{ bg: "transparent" }}
+              _selected={{ bg: "transparent" }}
             >
-              <MdControlPoint />
+              <MdControlPoint color="#b3b3b3" fontSize="20px" />
             </MenuButton>
             <MenuList
               bg="rgba(10 ,10,10,0.9)"
-              style={{ backdropFilter: "blur(4px)" }}
+              style={{ backdropFilter: "blur(2px)" }}
+              borderColor="blue"
+              minW="0"
+              w="200px"
+              p="0"
             >
-              <MenuItem _focus={{ bg: "rgba(66,66,66,0.1)" }}>
+              <MenuItem display="flex" justifyContent="flex-end">
                 <Heading
                   cursor="pointer"
                   as="h2"
@@ -165,8 +173,8 @@ export default function Navigation() {
                   Get Featured
                 </Heading>
               </MenuItem>
-              <MenuItem _focus={{ bg: "rgba(66,66,66,0.1)" }}>
-                <NextLink href="/notes" passHref>
+              <NextLink href="/notes" passHref>
+                <MenuItem display="flex" justifyContent="flex-end">
                   <Heading
                     cursor="pointer"
                     as="h1"
@@ -175,15 +183,14 @@ export default function Navigation() {
                   >
                     Notes
                   </Heading>
-                </NextLink>
-              </MenuItem>
-
-              <MenuItem _focus={{ bg: "rgba(66,66,66,0.1)" }}>
-                <a
-                  href="mailto:hello@javier.onl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                </MenuItem>
+              </NextLink>
+              <a
+                href="mailto:hello@javier.onl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MenuItem display="flex" justifyContent="flex-end">
                   <Heading
                     cursor="pointer"
                     as="h2"
@@ -192,8 +199,8 @@ export default function Navigation() {
                   >
                     Contact
                   </Heading>
-                </a>
-              </MenuItem>
+                </MenuItem>
+              </a>
             </MenuList>
           </Menu>
         </Flex>
