@@ -166,6 +166,7 @@ export default function Navigation() {
                 display="flex"
                 justifyContent="flex-end"
                 _focus={{ bg: "rgba(10 ,10,10,0.7)" }}
+                _active={{ bg: "rgba(10 ,10,10,0.7)" }}
               >
                 <Heading
                   cursor="pointer"
@@ -182,6 +183,7 @@ export default function Navigation() {
                   display="flex"
                   justifyContent="flex-end"
                   _focus={{ bg: "rgba(10 ,10,10,0.7)" }}
+                  _active={{ bg: "rgba(10 ,10,10,0.7)" }}
                 >
                   <Heading
                     cursor="pointer"
@@ -202,6 +204,7 @@ export default function Navigation() {
                   display="flex"
                   justifyContent="flex-end"
                   _focus={{ bg: "rgba(10 ,10,10,0.7)" }}
+                  _active={{ bg: "rgba(10 ,10,10,0.7)" }}
                 >
                   <Heading
                     cursor="pointer"
