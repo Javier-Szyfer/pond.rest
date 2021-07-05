@@ -20,23 +20,4 @@ module.exports = withMDX({
   eslint: {
     dirs: ["pages", "utils"], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
   },
-  webpack(config, options) {
-    config.module.rules.push({
-      test: /\.svg?$/,
-      use: [
-        {
-          loader: "@svgr/webpack",
-        },
-        {
-          loader: "file-loader",
-        },
-      ],
-      type: "javascript/auto",
-      issuer: {
-        and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
-      },
-    });
-
-    return config;
-  },
 });

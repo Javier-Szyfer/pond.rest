@@ -23,11 +23,17 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { MdClose, MdExpandLess, MdExpandMore } from "react-icons/md";
+import {
+  MdClose,
+  MdExpandLess,
+  MdExpandMore,
+  MdControlPoint,
+} from "react-icons/md";
 
 export default function Player({ isOpen, onToggle }) {
   const { selectedTrack, setTrackData } = useMusicPlayer();
   const [expandMore, setExpandMore] = useState(false);
+  const [showButton, setShowButton] = useState(false);
   const [isMobile] = useMediaQuery("(max-width: 840px)");
   const { isOpen: isModalOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -51,14 +57,42 @@ export default function Player({ isOpen, onToggle }) {
             alignItems="center"
             justifyContent="flex-start"
           >
-            <Box w="50px" mr="1rem" cursor="pointer" onClick={onOpen}>
+            <Box
+              w="50px"
+              mr="1rem"
+              cursor="pointer"
+              onClick={onOpen}
+              onMouseEnter={() => setShowButton(true)}
+              onMouseLeave={() => setShowButton(false)}
+              position="relative"
+            >
               <Image
                 src={selectedTrack?.urlImage}
                 alt="artist pic"
                 width={300}
                 height={300}
                 objectFit="cover"
+                layout="responsive"
               />
+              {showButton && (
+                <Box
+                  position="absolute"
+                  top="0"
+                  left="0"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  w="100%"
+                  h="100%"
+                  style={{ backdropFilter: "blur(1px)" }}
+                  cursor="pointer"
+                >
+                  <MdControlPoint
+                    fontSize="30px"
+                    color="rgba(255,255,255,0.7)"
+                  />
+                </Box>
+              )}
             </Box>
             <Box onClick={onOpen}>
               <Heading as="h4" fontSize="12px" color="#b3b3b3" cursor="pointer">
