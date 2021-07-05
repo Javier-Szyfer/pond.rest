@@ -23,7 +23,7 @@ export default function Home() {
   const { isOpen, onToggle } = useDisclosure();
   const [isMobile] = useMediaQuery([
     "(max-width: 767px",
-    // "(display-mode: browser )",
+    "(display-mode: browser )",
   ]);
 
   const [email, setEmail] = useState("");
