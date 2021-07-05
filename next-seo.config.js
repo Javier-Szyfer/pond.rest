@@ -1,6 +1,6 @@
-const title = "Pond – An intimate relationtip with  machines";
+const title = "Pond – An intimate relationship with machines";
 const description =
-  "A quiet place for listening to modular music and discover artists";
+  "A quiet place for listening to modular synth music and discover artists";
 
 const SEO = {
   title,
