@@ -1,26 +1,26 @@
 const title = "Pond – An intimate relationtip with  machines";
 const description =
-  "Pond is a quiet place for listening to modular music and contemplate water-waves";
+  "A quiet place for listening to modular music and discover artists";
 
 const SEO = {
   title,
   description,
-  //   canonical: "https://fastfeedback.io",
-  //   openGraph: {
-  //     type: "website",
-  //     locale: "en_IE",
-  //     url: "https://fastfeedback.io",
-  //     title,
-  //     description,
-  //     images: [
-  //       {
-  //         url: "https://fastfeedback.io/og.png",
-  //         alt: title,
-  //         width: 1280,
-  //         height: 720,
-  //       },
-  //     ],
-  //   },
+  canonical: "https://pond.rest",
+  openGraph: {
+    type: "website",
+    locale: "en_IE",
+    url: "https://pond.rest",
+    title,
+    description,
+    images: [
+      {
+        url: "https://pond.rest/og.png",
+        alt: title,
+        width: 1280,
+        height: 720,
+      },
+    ],
+  },
 };
 
 export default SEO;
