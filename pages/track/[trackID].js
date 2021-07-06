@@ -32,8 +32,9 @@ export default function TrackId() {
   const router = useRouter();
   // console.log(router.query.trackID);
   const [state] = useContext(MusicPlayerContext);
-  const { playTrack, isPlaying, setIsPlaying } = useMusicPlayer();
-  // console.log(state);
+  const { playTrack, isPlaying, setIsPlaying, selectedTrack } =
+    useMusicPlayer();
+  console.log(state);
 
   const { data: trackId } = useSWR(
     router?.query?.trackID
@@ -53,7 +54,7 @@ export default function TrackId() {
     if (trackId?.trackById) {
       play();
     }
-    return;
+
     // console.log(selectedTrack);
   }, [trackId]);
 
@@ -90,8 +91,15 @@ export default function TrackId() {
   };
 
   const goToTrack = (tr) => {
-    console.log(tr);
-    if (isPlaying) {
+    console.log(tr.id);
+    console.log(router?.query?.trackID);
+
+    if (router?.query?.trackID === tr.id) {
+      playTrack(tr);
+      if (!isOpen) {
+        onToggle();
+      }
+    } else if (isPlaying) {
       setIsPlaying(false);
       router.push({ pathname: `${tr.id}` }, undefined, { scroll: false });
     } else router.push({ pathname: `${tr.id}` }, undefined, { scroll: false });

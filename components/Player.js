@@ -238,7 +238,8 @@ export default function Player({ isOpen, onToggle }) {
             )}
             <AudioPlayer
               showJumpControls={false}
-              autoPlay
+              autoPlay={true}
+              autoPlayAfterSrcChange={true}
               src={selectedTrack?.urlAudio}
               layout="horizontal-reverse"
               // other props here
