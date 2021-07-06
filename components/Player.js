@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 import NextLink from "next/link";
+import elements from "../public/elements.jpg";
 
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 // import "react-h5-audio-player/lib/styles.css";
@@ -128,13 +129,14 @@ export default function Player({ isOpen, onToggle }) {
                   <Heading
                     as="h4"
                     fontSize="12px"
-                    mr=".5rem"
+                    mr=".3rem"
                     cursor="pointer"
                     color="#a8a8a8"
+                    whiteSpace="nowrap"
                   >
                     {selectedTrack?.artistName}
                   </Heading>
-                  <span style={{ marginRight: ".5rem", color: "#a8a8a8" }}>
+                  <span style={{ marginRight: ".3rem", color: "#a8a8a8" }}>
                     -
                   </span>
                   <Heading
@@ -142,7 +144,7 @@ export default function Player({ isOpen, onToggle }) {
                     fontWeight="light"
                     fontSize="12px"
                     color="#a8a8a8"
-                    maxW={{ base: "210px", sm: "280px" }}
+                    maxW={{ base: "180px", sm: "280px" }}
                     isTruncated
                   >
                     {selectedTrack?.trackName}
@@ -288,15 +290,17 @@ export default function Player({ isOpen, onToggle }) {
               <Box w={{ base: "200px", md: "300px" }} m="1rem 0">
                 <Image
                   src={selectedTrack?.urlImage}
+                  // src={elements}
                   alt="artist pic"
                   width={300}
                   height={300}
                   objectFit="cover"
+                  // placeholder="blur"
                 />
               </Box>
               {selectedTrack?.artistContact && (
                 <Text fontSize="12px" display="flex" justifyContent="center">
-                  Listen more of {selectedTrack?.artistName}s music
+                  Listen more of {selectedTrack?.artistName}&#39;s music
                   <NextLink href={selectedTrack?.artistContact} passHref>
                     <a
                       target="_blank"
