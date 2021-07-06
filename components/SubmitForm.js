@@ -82,7 +82,7 @@ export default function SubmitForm() {
           Message{" "}
         </FormLabel>
         <Textarea
-          placeholder="If you want to send us a message"
+          placeholder="If you want to say something"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           _focus={{ borderColor: "#909090" }}

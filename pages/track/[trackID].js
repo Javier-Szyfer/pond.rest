@@ -1,11 +1,13 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+
 import { useRouter } from "next/router";
-import Image from "next/image";
+import useSWR from "swr";
+import fetcher from "../../utils/fetcher";
 
-import { subscribeUser } from "../lib/db";
+import { subscribeUser } from "../../lib/db";
 
-import { MusicPlayerContext } from "../context/AudioContext";
-// import useMusicPlayer from "../hooks/useMusicPlayer";
+import { MusicPlayerContext } from "../../context/AudioContext";
+import useMusicPlayer from "../../hooks/useMusicPlayer";
 
 import {
   Container,
@@ -16,22 +18,49 @@ import {
   Button,
   useDisclosure,
   Divider,
-  Spinner,
   SimpleGrid,
+  Spinner,
   useMediaQuery,
 } from "@chakra-ui/react";
 
-import Thumbnails from "../components/Thumbnails";
-import Player from "../components/Player";
+import Thumbnails from "../../components/Thumbnails";
+import Player from "../../components/Player";
 import { MdSentimentSatisfied } from "react-icons/md";
 
-export default function Home() {
+export default function TrackId() {
   const { isOpen, onToggle } = useDisclosure();
   const router = useRouter();
+  // console.log(router.query.trackID);
   const [state] = useContext(MusicPlayerContext);
-  // const { playTrack } = useMusicPlayer();
-  console.log(state);
-  const [isMobile] = useMediaQuery("(max-width: 1025px)");
+  const { playTrack, isPlaying, setIsPlaying } = useMusicPlayer();
+  // console.log(state);
+
+  const { data: trackId } = useSWR(
+    router?.query?.trackID
+      ? ["../api/getTrackById", router?.query?.trackID]
+      : null,
+    fetcher
+  );
+
+  // console.log("trackId", trackId?.trackById);
+  useEffect(() => {
+    function play() {
+      playTrack(trackId?.trackById);
+      if (!isOpen) {
+        onToggle();
+      }
+    }
+    if (trackId?.trackById) {
+      play();
+    }
+    return;
+    // console.log(selectedTrack);
+  }, [trackId]);
+
+  // const [isMobile] = useMediaQuery([
+  //   "(max-width: 767px",
+  //   "(display-mode: browser )",
+  // ]);
 
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -62,9 +91,14 @@ export default function Home() {
 
   const goToTrack = (tr) => {
     console.log(tr);
+    if (isPlaying) {
+      setIsPlaying(false);
+      router.push({ pathname: `${tr.id}` }, undefined, { scroll: false });
+    } else router.push({ pathname: `${tr.id}` }, undefined, { scroll: false });
+
     // playTrack(tr);
-    router.push({ pathname: `track/${tr.id}` }, undefined, { scroll: false });
   };
+
   return (
     <Container maxW="container.xl">
       <Box className="svgLogo">
@@ -151,7 +185,6 @@ export default function Home() {
           <Spinner color="#b3b3b3" />
         </Box>
       )}
-
       <SimpleGrid columns={{ base: 1, lg: 2 }}>
         <SimpleGrid
           columns={{ base: 1, sm: 2, md: 2 }}
@@ -163,6 +196,8 @@ export default function Home() {
           ))}
         </SimpleGrid>
       </SimpleGrid>
+
+      <Player isOpen={isOpen} onToggle={onToggle} />
     </Container>
   );
 }
