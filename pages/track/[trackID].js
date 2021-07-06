@@ -34,7 +34,7 @@ export default function TrackId() {
   const [state] = useContext(MusicPlayerContext);
   const { playTrack, isPlaying, setIsPlaying, selectedTrack } =
     useMusicPlayer();
-  console.log(state);
+  // console.log(state);
 
   const { data: trackId } = useSWR(
     router?.query?.trackID
@@ -51,7 +51,7 @@ export default function TrackId() {
         onToggle();
       }
     }
-    if (trackId?.trackById) {
+    if (trackId?.trackById != undefined) {
       play();
     }
 
@@ -91,8 +91,8 @@ export default function TrackId() {
   };
 
   const goToTrack = (tr) => {
-    console.log(tr.id);
-    console.log(router?.query?.trackID);
+    // console.log(tr.id);
+    // console.log(router?.query?.trackID);
 
     if (router?.query?.trackID === tr.id) {
       playTrack(tr);
@@ -199,7 +199,7 @@ export default function TrackId() {
           spacing={{ base: 3, sm: 4 }}
           m="2rem  0"
         >
-          {state.allTracks?.tracks?.map((tr) => (
+          {state?.allTracks?.tracks?.map((tr) => (
             <Thumbnails key={tr.id} tr={tr} goToTrack={goToTrack} />
           ))}
         </SimpleGrid>
