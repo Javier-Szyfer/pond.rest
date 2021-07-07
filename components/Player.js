@@ -40,7 +40,7 @@ export default function Player({ isOpen, onToggle }) {
   const [showButton, setShowButton] = useState(false);
   const [isMobile] = useMediaQuery("(max-width: 840px)");
   const { isOpen: isModalOpen, onOpen, onClose } = useDisclosure();
-  if (selectedTrack || isOpen) {
+  if (selectedTrack) {
     return (
       <Slide
         direction="bottom"
