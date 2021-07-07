@@ -1,28 +1,8 @@
-import { useContext } from "react";
-
-import {
-  SimpleGrid,
-  Box,
-  Text,
-  Spinner,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, Text, useMediaQuery } from "@chakra-ui/react";
 import { formatDistance, parseISO } from "date-fns";
 
-// import { MusicPlayerContext } from "../context/AudioContext";
-// import useMusicPlayer from "../hooks/useMusicPlayer";
-
-export default function Thumbnails({ onToggle, isOpen, tr, goToTrack }) {
-  // const [state] = useContext(MusicPlayerContext);
-  // const { playTrack } = useMusicPlayer();
+export default function Thumbnails({ tr, goToTrack }) {
   const [isMobile] = useMediaQuery("(max-width: 1025px)");
-
-  // const handlePlay = (tr) => {
-  //   playTrack(tr);
-  //   if (!isOpen) {
-  //     onToggle();
-  //   }
-  // };
 
   return (
     <Box

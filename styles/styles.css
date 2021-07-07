@@ -30,6 +30,10 @@
   font-family: Arial, Helvetica, sans-serif;
   background-color: transparent;
 }
+.isLoading {
+  display: none;
+}
+
 .rhap_container:focus {
   outline: 0;
 }
