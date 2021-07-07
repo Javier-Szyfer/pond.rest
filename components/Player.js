@@ -258,7 +258,7 @@ export default function Player({ isOpen, onToggle }) {
               <AudioPlayer
                 className={loadingTrack && "isLoading"}
                 onLoadStart={() => setLoadingTrack(true)}
-                onLoadedData={() => setLoadingTrack(false)}
+                onLoadedMetaData={() => setLoadingTrack(false)}
                 showJumpControls={false}
                 autoPlay={true}
                 autoPlayAfterSrcChange={true}
@@ -266,10 +266,10 @@ export default function Player({ isOpen, onToggle }) {
                 layout="horizontal-reverse"
                 // other props here
                 customProgressBarSection={[
-                  loadingTrack ? null : RHAP_UI.CURRENT_TIME,
+                  RHAP_UI.CURRENT_TIME,
                   RHAP_UI.PLAY,
                   RHAP_UI.PROGRESS_BAR,
-                  loadingTrack ? null : RHAP_UI.DURATION,
+                  RHAP_UI.DURATION,
                   RHAP_UI.VOLUME,
                 ]}
                 customVolumeControls={[]}

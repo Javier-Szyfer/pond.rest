@@ -38,13 +38,6 @@
   outline: 0;
 }
 
-/* .rhap_container svg {
-  color: rgba(129, 16, 16, 0.797);
-  margin-right: 1rem;
-  width: 24px;
-  height: 24px;
-} */
-
 .rhap_play-pause-button svg {
   color: rgb(133, 133, 133);
   width: 30px;
@@ -140,7 +133,7 @@
 
 .rhap_time {
   color: #b3b3b3;
-  font-size: 16px;
+  font-size: 14px;
   user-select: none;
   -webkit-user-select: none;
 }
