@@ -34,12 +34,13 @@ import {
 
 export default function Player({ isOpen, onToggle }) {
   const { selectedTrack, setTrackData } = useMusicPlayer();
+  // console.log(selectedTrack);
   const [loadingTrack, setLoadingTrack] = useState(false);
   const [expandMore, setExpandMore] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [isMobile] = useMediaQuery("(max-width: 840px)");
   const { isOpen: isModalOpen, onOpen, onClose } = useDisclosure();
-  if (selectedTrack) {
+  if (selectedTrack || isOpen) {
     return (
       <Slide
         direction="bottom"

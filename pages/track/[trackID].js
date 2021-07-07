@@ -44,14 +44,14 @@ export default function TrackId() {
   );
 
   // console.log("trackId", trackId?.trackById);
-  useEffect(() => {
+  useEffect(async () => {
     function play() {
       playTrack(trackId?.trackById);
       if (!isOpen) {
         onToggle();
       }
     }
-    if (trackId?.trackById != undefined) {
+    if (await trackId?.trackById) {
       play();
     }
 

@@ -86,6 +86,7 @@ export default function PostLayout({ children, meta }) {
             objectFit="cover"
             alt="modular synth pic"
             layout="responsive"
+            priority
           />
         </Box>
 

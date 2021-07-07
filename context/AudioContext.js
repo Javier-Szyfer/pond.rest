@@ -22,7 +22,6 @@ const MusicPlayerProvider = (props) => {
     }
     return;
   }, [allTracks]);
-  // console.log(state);
 
   return (
     <MusicPlayerContext.Provider value={[state, setState]}>
