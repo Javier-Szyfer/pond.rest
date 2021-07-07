@@ -2,10 +2,10 @@ import { extendTheme } from "@chakra-ui/react";
 // import { mode } from "@chakra-ui/theme-tools";
 
 // 2. Add your color mode config
-// const config = {
-//   initialColorMode: "dark",
-//   useSystemColorMode: false,
-// };
+const config = {
+  initialColorMode: "dark",
+  useSystemColorMode: false,
+};
 
 const styles = {
   global: {
@@ -15,10 +15,10 @@ const styles = {
     },
   },
 };
-const fonts = {
-  heading: "Work Sans",
-  body: "Work Sans",
-};
+// const fonts = {
+//   heading: "Work Sans",
+//   body: "Work Sans",
+// };
 
 const components = {
   Button: {
@@ -45,7 +45,7 @@ const components = {
 
 // 3. extend the theme
 const theme = extendTheme({
-  // config,
+  config,
   styles,
   components,
   // fonts: {

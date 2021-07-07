@@ -10,7 +10,7 @@ import Fonts from "../public/fonts/Fonts";
 
 import { MDXProvider } from "@mdx-js/react";
 import MDXComponents from "../components/MDXComponents";
-import { ChakraProvider, CSSReset } from "@chakra-ui/react";
+import { ChakraProvider, CSSReset, ColorModeProvider } from "@chakra-ui/react";
 import theme from "../styles/theme";
 import "../styles/styles.css";
 
@@ -18,6 +18,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <MusicPlayerProvider>
       <ChakraProvider theme={theme}>
+        <ColorModeProvider options={theme.config} />
         {/* <Fonts /> */}
         <CSSReset />
         <AuthProvider>
