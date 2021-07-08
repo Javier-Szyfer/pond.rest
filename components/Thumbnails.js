@@ -1,15 +1,19 @@
 import { Box, Text, useMediaQuery } from "@chakra-ui/react";
 import { formatDistance, parseISO } from "date-fns";
+import { useRouter } from "next/router";
+
 import useMusicPlayer from "../hooks/useMusicPlayer";
 
 export default function Thumbnails({ tr, goToTrack }) {
   const [isMobile] = useMediaQuery("(max-width: 1025px)");
-
   const { selectedTrack } = useMusicPlayer();
+  const router = useRouter();
+
+  console.log(tr.id);
+  console.log(router?.query?.trackID);
 
   return (
     <Box
-      key={tr.id}
       className="card"
       borderRadius="0.375rem"
       display="flex"
@@ -20,8 +24,8 @@ export default function Thumbnails({ tr, goToTrack }) {
       minH="100px"
       w="100%"
       h="100%"
-      bg={selectedTrack?.id === tr.id ? "#252525" : "#141414"}
-      _hover={{ bg: isMobile ? "#181818" : "#181818" }}
+      bg={router?.query?.trackID === tr?.id ? "#252525" : "#141414"}
+      _hover={!isMobile && { bg: "#181818" }}
       // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
       // border="1px solid #505050"
       boxShadow="rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
