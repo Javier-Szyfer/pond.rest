@@ -212,10 +212,13 @@ export default function Player({ isOpen, onToggle }) {
                       alignItems="center"
                       flexDirection="column"
                     >
-                      <Heading as="h6" size="sm">
+                      <Heading as="h6" size="sm" color="#b3b3b3">
                         {selectedTrack?.artistName}
                       </Heading>
-                      <Text fontSize="12px"> {selectedTrack?.trackName}</Text>
+                      <Text fontSize="12px" color="#b3b3b3">
+                        {" "}
+                        {selectedTrack?.trackName}
+                      </Text>
                       <Box
                         w={{ base: "30vh", sm: "50vh" }}
                         m="1rem 0"
@@ -236,6 +239,7 @@ export default function Player({ isOpen, onToggle }) {
                           fontSize="12px"
                           display="flex"
                           justifyContent="center"
+                          color="#b3b3b3"
                         >
                           Listen more of {selectedTrack?.artistName}s music
                           <NextLink
@@ -289,7 +293,7 @@ export default function Player({ isOpen, onToggle }) {
                 color="rgb(133, 133, 133)"
                 size="20px"
                 onClick={() => {
-                  onToggle(), setTrackData(null);
+                  onToggle();
                 }}
               />
             )}
@@ -312,10 +316,13 @@ export default function Player({ isOpen, onToggle }) {
                 flexDirection="column"
                 alignItems="center"
               >
-                <Heading as="h6" size="sm">
+                <Heading as="h6" size="sm" color="#b3b3b3">
                   {selectedTrack?.artistName}
                 </Heading>
-                <Text fontSize="12px"> {selectedTrack?.trackName}</Text>
+                <Text fontSize="12px" color="#b3b3b3">
+                  {" "}
+                  {selectedTrack?.trackName}
+                </Text>
                 <Box w={{ base: "200px", md: "300px" }} m="1rem 0">
                   <Image
                     src={selectedTrack?.urlImage}
@@ -328,7 +335,12 @@ export default function Player({ isOpen, onToggle }) {
                   />
                 </Box>
                 {selectedTrack?.artistContact && (
-                  <Text fontSize="12px" display="flex" justifyContent="center">
+                  <Text
+                    fontSize="12px"
+                    display="flex"
+                    justifyContent="center"
+                    color="#b3b3b3"
+                  >
                     Listen more of {selectedTrack?.artistName}&#x27;s music
                     <NextLink href={selectedTrack?.artistContact} passHref>
                       <a
