@@ -31,9 +31,10 @@ export default function TrackId() {
   const { isOpen, onToggle } = useDisclosure();
   const router = useRouter();
   // console.log(router.query.trackID);
+
   const [state] = useContext(MusicPlayerContext);
-  const { playTrack, isPlaying, setIsPlaying, selectedTrack } =
-    useMusicPlayer();
+  const { playTrack, isPlaying, setIsPlaying } = useMusicPlayer();
+
   // console.log(state);
 
   const { data: trackId } = useSWR(
@@ -43,7 +44,7 @@ export default function TrackId() {
     fetcher
   );
 
-  // console.log("trackId", trackId?.trackById);
+  // console.log("trackId", trackId);
   useEffect(async () => {
     function play() {
       playTrack(trackId?.trackById);
@@ -178,7 +179,7 @@ export default function TrackId() {
         </form>
         {wontSpam && (
           <Text color="#b3b3b3" fontSize="14px" mt="4px">
-            we wont spam you, it&aposs a promise
+            we wont spam you, it&#39;s a promise
           </Text>
         )}
       </Box>
@@ -193,14 +194,22 @@ export default function TrackId() {
           <Spinner color="#b3b3b3" />
         </Box>
       )}
+
       <SimpleGrid columns={{ base: 1, lg: 2 }}>
         <SimpleGrid
           columns={{ base: 1, sm: 2, md: 2 }}
           spacing={{ base: 3, sm: 4 }}
           m="2rem  0"
         >
-          {state?.allTracks?.tracks?.map((tr) => (
-            <Thumbnails key={tr.id} tr={tr} goToTrack={goToTrack} />
+          {/* {selectedTrack && (
+            <Thumbnails
+              tr={selectedTrack}
+              goToTrack={goToTrack}
+            />
+          )} */}
+
+          {state?.allTracks?.tracks.map((tr) => (
+            <Thumbnails tr={tr} key={tr.id} goToTrack={goToTrack} />
           ))}
         </SimpleGrid>
       </SimpleGrid>
