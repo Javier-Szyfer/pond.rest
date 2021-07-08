@@ -108,7 +108,7 @@ export default function Player({ isOpen, onToggle }) {
               <Box onClick={onOpen}>
                 <Heading
                   as="h4"
-                  fontSize="12px"
+                  fontSize="10px"
                   color="#b3b3b3"
                   cursor="pointer"
                 >
@@ -117,7 +117,7 @@ export default function Player({ isOpen, onToggle }) {
                 <Heading
                   as="h5"
                   fontWeight="light"
-                  fontSize="12px"
+                  fontSize="10px"
                   color="#b3b3b3"
                   cursor="pointer"
                   maxW="200px"
@@ -145,7 +145,7 @@ export default function Player({ isOpen, onToggle }) {
                   >
                     <Heading
                       as="h4"
-                      fontSize="12px"
+                      fontSize="10px"
                       mr=".3rem"
                       cursor="pointer"
                       color="#a8a8a8"
@@ -159,7 +159,7 @@ export default function Player({ isOpen, onToggle }) {
                     <Heading
                       as="h5"
                       fontWeight="light"
-                      fontSize="12px"
+                      fontSize="10px"
                       color="#a8a8a8"
                       maxW={{ base: "180px", sm: "280px" }}
                       isTruncated
@@ -329,7 +329,7 @@ export default function Player({ isOpen, onToggle }) {
                 </Box>
                 {selectedTrack?.artistContact && (
                   <Text fontSize="12px" display="flex" justifyContent="center">
-                    Listen more of {selectedTrack?.artistName}&#39;s music
+                    Listen more of {selectedTrack?.artistName}&#x27;s music
                     <NextLink href={selectedTrack?.artistContact} passHref>
                       <a
                         target="_blank"

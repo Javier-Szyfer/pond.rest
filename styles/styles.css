@@ -147,7 +147,7 @@ body {
 
 .rhap_time {
   color: #b3b3b3;
-  font-size: 14px;
+  font-size: 13px;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -245,5 +245,8 @@ body {
   }
   .rhap_volume-bar-area {
     display: none;
+  }
+  .rhap_time {
+    font-size: 10px;
   }
 }

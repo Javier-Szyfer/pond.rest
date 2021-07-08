@@ -1,8 +1,11 @@
 import { Box, Text, useMediaQuery } from "@chakra-ui/react";
 import { formatDistance, parseISO } from "date-fns";
+import useMusicPlayer from "../hooks/useMusicPlayer";
 
 export default function Thumbnails({ tr, goToTrack }) {
   const [isMobile] = useMediaQuery("(max-width: 1025px)");
+
+  const { selectedTrack } = useMusicPlayer();
 
   return (
     <Box
@@ -17,7 +20,7 @@ export default function Thumbnails({ tr, goToTrack }) {
       minH="100px"
       w="100%"
       h="100%"
-      bg="#141414"
+      bg={selectedTrack?.id === tr.id ? "#252525" : "#141414"}
       _hover={{ bg: isMobile ? "#181818" : "#181818" }}
       // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
       // border="1px solid #505050"
