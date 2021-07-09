@@ -2,10 +2,8 @@ import { useState } from "react";
 
 import Image from "next/image";
 import NextLink from "next/link";
-import elements from "../public/elements.jpg";
 
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
-// import "react-h5-audio-player/lib/styles.css";
 
 import useMusicPlayer from "../hooks/useMusicPlayer";
 
@@ -32,14 +30,14 @@ import {
   MdControlPoint,
 } from "react-icons/md";
 
-export default function Player({ isOpen, onToggle }) {
+export default function Player({ isOpen, onToggle, setStartAnim }) {
   const { selectedTrack, setTrackData } = useMusicPlayer();
-  // console.log(selectedTrack);
   const [loadingTrack, setLoadingTrack] = useState(false);
   const [expandMore, setExpandMore] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [isMobile] = useMediaQuery("(max-width: 840px)");
   const { isOpen: isModalOpen, onOpen, onClose } = useDisclosure();
+
   if (selectedTrack) {
     return (
       <Slide
@@ -202,7 +200,10 @@ export default function Player({ isOpen, onToggle }) {
                       color="rgb(133, 133, 133)"
                       size="20px"
                       onClick={() => {
-                        onToggle(), setTrackData(null), setExpandMore(false);
+                        onToggle(),
+                          // setTrackData(null),
+                          setExpandMore(false),
+                          setStartAnim(false);
                       }}
                     />
                   </Box>
@@ -269,6 +270,8 @@ export default function Player({ isOpen, onToggle }) {
                 autoPlayAfterSrcChange={true}
                 src={selectedTrack?.urlAudio}
                 layout="horizontal-reverse"
+                onPlay={() => setStartAnim(true)}
+                onPause={() => setStartAnim(false)}
                 // other props here
                 customProgressBarSection={[
                   RHAP_UI.CURRENT_TIME,
@@ -294,6 +297,7 @@ export default function Player({ isOpen, onToggle }) {
                 size="20px"
                 onClick={() => {
                   onToggle();
+                  setStartAnim(false);
                 }}
               />
             )}
