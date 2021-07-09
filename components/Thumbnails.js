@@ -6,11 +6,10 @@ import useMusicPlayer from "../hooks/useMusicPlayer";
 
 export default function Thumbnails({ tr, goToTrack }) {
   const [isMobile] = useMediaQuery("(max-width: 1025px)");
-  const { selectedTrack } = useMusicPlayer();
   const router = useRouter();
 
-  console.log(tr.id);
-  console.log(router?.query?.trackID);
+  // console.log(tr.id);
+  // console.log(router?.query?.trackID);
 
   return (
     <Box
@@ -22,8 +21,8 @@ export default function Thumbnails({ tr, goToTrack }) {
       cursor="pointer"
       minW="100px"
       minH="100px"
-      w="100%"
-      h="100%"
+      // w="100%"
+      // h="100%"
       bg={router?.query?.trackID === tr?.id ? "#252525" : "#141414"}
       _hover={!isMobile && { bg: "#181818" }}
       // bg={colorMode === "light" ? colorsLight(i) : colorsDark(i)}
