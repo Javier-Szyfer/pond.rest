@@ -22,7 +22,7 @@ import {
   Divider,
   SimpleGrid,
   Spinner,
-  useMediaQuery,
+  // useMediaQuery,
 } from "@chakra-ui/react";
 
 import Thumbnails from "../../components/Thumbnails";
@@ -47,20 +47,23 @@ export default function TrackId() {
     fetcher
   );
 
-  // console.log("trackId", trackId);
+  // console.log("trackId", trackId?.trackById);
   useEffect(async () => {
     function play() {
+      console.log("playing");
       playTrack(trackId?.trackById);
       if (!isOpen) {
         onToggle();
       }
+      return;
     }
     if (await trackId?.trackById) {
+      console.log("hay track id");
       play();
     }
 
     // console.log(selectedTrack);
-  }, [trackId]);
+  }, [trackId?.trackById]);
 
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -127,7 +130,7 @@ export default function TrackId() {
                     : "#b3b3b3",
                 }}
                 transition={{
-                  duration: 260,
+                  duration: 360,
                   repeat: Infinity,
                   repeatType: "linear",
                 }}
@@ -148,7 +151,7 @@ export default function TrackId() {
                     : "#b3b3b3",
                 }}
                 transition={{
-                  duration: 260,
+                  duration: 360,
                   repeat: Infinity,
                   repeatType: "reverse",
                 }}
@@ -169,7 +172,7 @@ export default function TrackId() {
                     : "#b3b3b3",
                 }}
                 transition={{
-                  duration: 260,
+                  duration: 360,
                   repeat: Infinity,
                   repeatType: "linear",
                 }}
@@ -190,7 +193,7 @@ export default function TrackId() {
                     : "#b3b3b3",
                 }}
                 transition={{
-                  duration: 260,
+                  duration: 360,
                   repeat: Infinity,
                   repeatType: "reverse",
                 }}

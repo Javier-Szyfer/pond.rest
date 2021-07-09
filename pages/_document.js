@@ -48,7 +48,7 @@ export default class Document extends NextDocument {
           />
           <meta
             property="og:image"
-            content="https://pond.rest/og.png"
+            content="https://pond.rest/og2.png"
             key="ogimage"
           />
           <meta
