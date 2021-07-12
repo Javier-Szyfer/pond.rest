@@ -50,7 +50,7 @@ export default function TrackId() {
   // console.log("trackId", trackId?.trackById);
   useEffect(async () => {
     function play() {
-      console.log("playing");
+      // console.log("playing");
       playTrack(trackId?.trackById);
       if (!isOpen) {
         onToggle();
@@ -58,7 +58,7 @@ export default function TrackId() {
       return;
     }
     if (await trackId?.trackById) {
-      console.log("hay track id");
+      // console.log("hay track id");
       play();
     }
 
