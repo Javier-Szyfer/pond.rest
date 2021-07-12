@@ -31,7 +31,7 @@ import {
 } from "react-icons/md";
 
 export default function Player({ isOpen, onToggle, setStartAnim }) {
-  const { selectedTrack, setTrackData } = useMusicPlayer();
+  const { selectedTrack } = useMusicPlayer();
   const [loadingTrack, setLoadingTrack] = useState(false);
   const [expandMore, setExpandMore] = useState(false);
   const [showButton, setShowButton] = useState(false);

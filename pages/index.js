@@ -59,7 +59,7 @@ export default function Home() {
   };
 
   const goToTrack = (tr) => {
-    console.log(tr);
+    // console.log(tr);
     // playTrack(tr);
     router.push({ pathname: `track/${tr.id}` }, undefined, { scroll: false });
   };

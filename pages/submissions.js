@@ -1,10 +1,12 @@
+import { useState } from "react";
+
 import { useAuth } from "../lib/auth";
 
 import useSWR from "swr";
 import fetcher from "../utils/fetcher";
-import NextLink from "next/link";
 
 import {
+  Tooltip,
   Text,
   Container,
   Heading,
@@ -20,6 +22,7 @@ export default function Submissions() {
   const { user } = useAuth();
 
   const { data: submissions } = useSWR("api/getSubmissions", fetcher);
+
   if (user) {
     return (
       <Container
@@ -39,12 +42,12 @@ export default function Submissions() {
           <Tbody>
             {submissions?.submissions.map((sub) => (
               <Tr key={sub.id}>
-                <Td cursor="pointer">
+                <Td cursor="pointer" maxW="180px" isTruncated>
                   <a href={sub.url} target="_blank" rel="noreferrer">
                     {sub.url}
                   </a>
                 </Td>
-                <Td>
+                <Td maxW="100px" isTruncated>
                   <a
                     href={`mailto:${sub.email}`}
                     target="_blank"
@@ -55,9 +58,11 @@ export default function Submissions() {
                 </Td>
 
                 <Td>
-                  <Text isTruncated maxW="200px">
-                    {sub.message}
-                  </Text>
+                  <Tooltip label={sub.message} placement="bottom-start">
+                    <Text isTruncated maxW="200px">
+                      {sub.message}
+                    </Text>
+                  </Tooltip>
                 </Td>
               </Tr>
             ))}
