@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NextLink from "next/link";
 
 import { useAuth } from "../lib/auth";
 
@@ -9,6 +10,7 @@ import {
   Tooltip,
   Text,
   Container,
+  Button,
   Heading,
   Table,
   Thead,
@@ -30,7 +32,12 @@ export default function Submissions() {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        flexDirection="column"
       >
+        <NextLink href="/">
+          <Button mr="1rem">Go home</Button>
+        </NextLink>
+
         <Table variant="simple" mt="3rem">
           <Thead>
             <Tr>
