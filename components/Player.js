@@ -35,7 +35,7 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
   const [loadingTrack, setLoadingTrack] = useState(false);
   const [expandMore, setExpandMore] = useState(false);
   const [showButton, setShowButton] = useState(false);
-  const [isMobile] = useMediaQuery("(max-width: 840px)");
+  const [isMobile] = useMediaQuery("(max-width: 970px)");
   const { isOpen: isModalOpen, onOpen, onClose } = useDisclosure();
 
   if (selectedTrack) {
@@ -50,9 +50,12 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
           bg={expandMore ? "rgba(15 ,15,15,0.7)" : "rgba(25 ,25,25,0.8)"}
           style={{ backdropFilter: "blur(3px)" }}
           maxH={isMobile ? "100vh" : "50vh"}
-          minH={{ base: "10vh", md: 0 }}
+          minH={{ base: "10vh", md: "15vh" }}
           p=".5rem 0"
           width="100vw"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
         >
           <Container
             maxW="container.xl"
@@ -67,7 +70,7 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
               justifyContent="flex-start"
             >
               <Box
-                w="50px"
+                w="90px"
                 mr="1rem"
                 cursor="pointer"
                 onClick={onOpen}
@@ -82,6 +85,7 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
                   height={300}
                   objectFit="cover"
                   layout="responsive"
+                  priority
                 />
                 {showButton && (
                   <Box
@@ -106,7 +110,7 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
               <Box onClick={onOpen}>
                 <Heading
                   as="h4"
-                  fontSize="10px"
+                  fontSize="12px"
                   color="#b3b3b3"
                   cursor="pointer"
                 >
@@ -115,7 +119,7 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
                 <Heading
                   as="h5"
                   fontWeight="light"
-                  fontSize="10px"
+                  fontSize="12px"
                   color="#b3b3b3"
                   cursor="pointer"
                   maxW="200px"
@@ -143,7 +147,7 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
                   >
                     <Heading
                       as="h4"
-                      fontSize="10px"
+                      fontSize="12px"
                       mr=".3rem"
                       cursor="pointer"
                       color="#a8a8a8"
@@ -157,7 +161,7 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
                     <Heading
                       as="h5"
                       fontWeight="light"
-                      fontSize="10px"
+                      fontSize="12px"
                       color="#a8a8a8"
                       maxW={{ base: "180px", sm: "280px" }}
                       isTruncated
@@ -307,7 +311,7 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
           isOpen={isModalOpen}
           onClose={onClose}
           isCentered
-          size={isMobile ? "xs" : "md"}
+          size={isMobile ? "xs" : "lg"}
         >
           <ModalOverlay />
           <ModalContent>
@@ -327,15 +331,14 @@ export default function Player({ isOpen, onToggle, setStartAnim }) {
                   {" "}
                   {selectedTrack?.trackName}
                 </Text>
-                <Box w={{ base: "200px", md: "300px" }} m="1rem 0">
+                <Box w={{ base: "200px", md: "400px" }} m="1rem 0">
                   <Image
                     src={selectedTrack?.urlImage}
-                    // src={elements}
                     alt="artist pic"
-                    width={300}
-                    height={300}
+                    width={400}
+                    height={400}
                     objectFit="cover"
-                    // placeholder="blur"
+                    priority
                   />
                 </Box>
                 {selectedTrack?.artistContact && (
