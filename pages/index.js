@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { subscribeUser } from "../lib/db";
 
 import { MusicPlayerContext } from "../context/AudioContext";
-// import useMusicPlayer from "../hooks/useMusicPlayer";
 
 import {
   Container,
@@ -13,23 +12,17 @@ import {
   Input,
   FormLabel,
   Button,
-  useDisclosure,
   Divider,
   Spinner,
   SimpleGrid,
-  useMediaQuery,
 } from "@chakra-ui/react";
 
 import Thumbnails from "../components/Thumbnails";
-import Player from "../components/Player";
 import { MdSentimentSatisfied } from "react-icons/md";
 
 export default function Home() {
-  const { isOpen, onToggle } = useDisclosure();
   const router = useRouter();
   const [state] = useContext(MusicPlayerContext);
-  // const { playTrack } = useMusicPlayer();
-  // const [isMobile] = useMediaQuery("(max-width: 1025px)");
 
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -59,8 +52,6 @@ export default function Home() {
   };
 
   const goToTrack = (tr) => {
-    // console.log(tr);
-    // playTrack(tr);
     router.push({ pathname: `track/${tr.id}` }, undefined, { scroll: false });
   };
   return (
@@ -69,7 +60,11 @@ export default function Home() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 428.07 285.86"
-          style={{ fill: "#b3b3b3", width: "50%" }}
+          style={{
+            fill: "#b3b3b3",
+            width: "10%",
+            transform: "translateY(.3rem)",
+          }}
         >
           <defs></defs>
           <g id="Layer_2" data-name="Layer 2">
@@ -88,7 +83,6 @@ export default function Home() {
           </g>
         </svg>
       </Box>
-
       <Box p="2rem 0 0 0" maxW={{ md: "700px" }} display="flex">
         <Text color="#b3b3b3" fontWeight="normal">
           This site is dedicated to those who enjoy music created with a modular
@@ -101,7 +95,6 @@ export default function Home() {
           </span>
         </Text>
       </Box>
-
       <Divider bg="#313131" maxW="600px" mt="12px" />
       <Box maxW="500px">
         <form onSubmit={handleSubscribe}>
@@ -155,17 +148,10 @@ export default function Home() {
           <Spinner color="#b3b3b3" />
         </Box>
       )}
-
-      <SimpleGrid columns={{ base: 1, lg: 2 }}>
-        <SimpleGrid
-          columns={{ base: 1, sm: 2, md: 2 }}
-          spacing={{ base: 3, sm: 4 }}
-          m="2rem  0"
-        >
-          {state.allTracks?.tracks?.map((tr) => (
-            <Thumbnails key={tr.id} tr={tr} goToTrack={goToTrack} />
-          ))}
-        </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={4} mt="2rem">
+        {state.allTracks?.tracks?.map((tr) => (
+          <Thumbnails key={tr.id} tr={tr} goToTrack={goToTrack} />
+        ))}
       </SimpleGrid>
     </Container>
   );

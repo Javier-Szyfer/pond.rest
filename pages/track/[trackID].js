@@ -48,20 +48,21 @@ export default function TrackId() {
   );
 
   // console.log("trackId", trackId?.trackById);
-  useEffect(async () => {
-    function play() {
+  useEffect(() => {
+    async function play() {
       // console.log("playing");
-      playTrack(trackId?.trackById);
       if (!isOpen) {
         onToggle();
+        playTrack(trackId?.trackById);
+      } else {
+        playTrack(trackId?.trackById);
+        return;
       }
-      return;
     }
-    if (await trackId?.trackById) {
+    if (trackId?.trackById) {
       // console.log("hay track id");
       play();
     }
-
     // console.log(selectedTrack);
   }, [trackId?.trackById]);
 
@@ -110,8 +111,11 @@ export default function TrackId() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 428.07 285.86"
-          style={{ fill: "#b3b3b3", width: "50%" }}
-          className="svg"
+          style={{
+            fill: "#b3b3b3",
+            width: "10%",
+            transform: "translateY(.3rem)",
+          }}
         >
           <defs></defs>
           <g id="Layer_2" data-name="Layer 2">
@@ -270,23 +274,10 @@ export default function TrackId() {
         </Box>
       )}
 
-      <SimpleGrid columns={{ base: 1, lg: 2 }}>
-        <SimpleGrid
-          columns={{ base: 1, sm: 2, md: 2 }}
-          spacing={{ base: 3, sm: 4 }}
-          m="2rem  0"
-        >
-          {/* {selectedTrack && (
-            <Thumbnails
-              tr={selectedTrack}
-              goToTrack={goToTrack}
-            />
-          )} */}
-
-          {state?.allTracks?.tracks.map((tr) => (
-            <Thumbnails tr={tr} key={tr.id} goToTrack={goToTrack} />
-          ))}
-        </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={4} mt="2rem">
+        {state?.allTracks?.tracks.map((tr) => (
+          <Thumbnails tr={tr} key={tr.id} goToTrack={goToTrack} />
+        ))}
       </SimpleGrid>
 
       <Player isOpen={isOpen} onToggle={onToggle} setStartAnim={setStartAnim} />

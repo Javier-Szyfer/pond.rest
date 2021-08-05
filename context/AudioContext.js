@@ -11,7 +11,7 @@ const MusicPlayerProvider = (props) => {
   // console.log(allTracks);
   // console.log(state);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (allTracks) {
       setState({
         allTracks,
